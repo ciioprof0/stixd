@@ -1,5 +1,5 @@
 # STIX Descriptions Main Repository
-STIX Descriptions 
+ 
 
 Table 1. List of Project Repositories
 | Repository | Description | URL |
