@@ -1,4 +1,4 @@
-# STIX Descriptions (stix2d)
+# STIX Descriptions (stixd) Main Repository
 STIX Descriptions 
 
 Table 1. List of Project Repositories
