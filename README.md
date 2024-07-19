@@ -25,5 +25,5 @@ In the initial proof-of-concept phase, we will focus on the `indicator` object (
 | 2-1. | [attack-stix-data](https://github.com/mitre-attack/attack-stix-data) | MITRE ATT&CK dataset represented in STIX 2.1 JSON collections. | 
 | 2-2. | [cti-pattern-validator](https://github.com/oasis-open/cti-pattern-validator) | A software tool for checking the syntax of the Cyber Threat Intelligence (CTI) STIX Pattern expressions |
 | 2-3. | [cti-python-stix2](https://github.com/oasis-open/cti-python-stix2) | Python APIs for serializing and de-serializing STIX2 JSON content, along with higher-level APIs for common tasks, including data markings, versioning, and for resolving STIX IDs across multiple data sources. |
-| 2-4. | [cti-stix2-json-schemas](https://github.com/oasis-open/cti-stix2-json-schemas) | ToDo: Add description |
+| 2-4. | [cti-stix2-json-schemas](https://github.com/oasis-open/cti-stix2-json-schemas) | JSON schemas and examples for STIX 2 |
 | 2-5. | [cti-stix-validator](https://github.com/oasis-open/cti-stix-validator) | The STIX Validator checks that STIX JSON content conforms to the requirements specified in the STIX 2.1 specification. |
