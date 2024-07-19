@@ -18,7 +18,7 @@ In the initial proof-of-concept phase, we will focus on the `indicator` object (
 | 1-3. | [stixd-validator](https://github.com/ciioprof0/stixd-validator) | Application to verify if a string is a member of the CNL. |
 
 
-#### Table 2. List of Related Repositories
+#### Table 2. List of Related Third-Party Repositories
 
 | No. | Repository | Description |
 |-----|------------|-------------|
