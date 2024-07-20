@@ -4,7 +4,7 @@ The goal of this project is to develop a specialized Controlled Natural Language
 
 ## Project Scope and Phases
 
-In the initial proof-of-concept phase, we will focus on the `indicator` object ([SDO 4.7](https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_muftrcpnf89v)) for describing MITRE ATT&CK Technique [T1204.001](https://attack.mitre.org/techniques/T1204/001/) - User Execution: Malicious Link. The deliverables for this phase are:
+In the initial proof-of-concept phase, we will focus on the `indicator` object ([SDO 4.7](https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_muftrcpnf89v)) for describing MITRE ATT&CK Technique [T1204.003](https://attack.mitre.org/techniques/T1204/003/) - User Execution: Malicious Image. The deliverables for this phase are:
 1. A relevant subset of the STIXD CNL.
 2. An application to validate if a given text string conforms to the CNL.
 
