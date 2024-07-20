@@ -1,6 +1,6 @@
-# STIX Descriptions Main Repository
+# STIX Descriptions CNL Main Repository
 
-The goal of this project is to develop a specialized Controlled Natural Language ([CNL](https://en.wikipedia.org/wiki/Controlled_natural_language)) and associated tools for the free-text description properties in STIX Domain Objects ([SDO](https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_nrhq5e9nylke)) and STIX Relationship Objects ([SRO](https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_cqhkqvhnlgfh)). The Structured Threat Information eXpression ([STIX](https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html)) version 2.1, released on June 10, 2021, includes 15 SDOs and two SROs with optional description properties.
+The goal of this project is to develop a specialized Controlled Natural Language ([CNL](https://en.wikipedia.org/wiki/Controlled_natural_language)) and associated tools for the free-text `description` properties in STIX Domain Objects ([SDO](https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_nrhq5e9nylke)) and STIX Relationship Objects ([SRO](https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_cqhkqvhnlgfh)). The Structured Threat Information eXpression ([STIX](https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html)) version 2.1, released on June 10, 2021, includes 15 SDOs and two SROs with optional description properties.
 
 ## Project Scope and Phases
 
