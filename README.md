@@ -1,6 +1,6 @@
 # STIX Descriptions CNL Main Repository
 
-The goal of this project is to develop a specialized Controlled Natural Language ([CNL](https://en.wikipedia.org/wiki/Controlled_natural_language)) and associated tools for the free-text `description` properties in STIX Domain Objects ([SDO](https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_nrhq5e9nylke)) and STIX Relationship Objects ([SRO](https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_cqhkqvhnlgfh)). The Structured Threat Information eXpression ([STIX](https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html)) version 2.1, released on June 10, 2021, includes 15 SDOs and two SROs with optional description properties.
+My long-term goal for the [HLTMS](https://linguistics.arizona.edu/online-ms-hlt) program is to create a specialized controlled natural language ([CNL](https://en.wikipedia.org/wiki/Controlled_natural_language)) and related tools for the free-text description properties in certain Structured Threat Information eXpression ([STIX](https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html)) objects. STIX Descriptions (STIX-D) related to adversary activities are instances of behavioral indicators of compromise (IOC). 
 
 ## Project Scope and Phases
 
