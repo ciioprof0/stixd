@@ -4,7 +4,7 @@ For my capstone project in the [HLTMS](https://linguistics.arizona.edu/online-ms
 
 ## Phase 1: Build a STIX-D Corpus
 
-Phase 1 of the project started during the Summer 2024 academic session with three components of the corpus with each component corresponding to class project. The components are:
+Phase 1 of the project started during the Summer 2024 academic session. It includes three components with each component corresponding to a class project. The components are:
 
 - [LING 508](https://catalog.arizona.edu/courses/0198961). An application to extract descriptions from STIX objects and parse the description texts into documents, sentences, and words, forming a corpus.
 - [INFO 579](https://catalog.arizona.edu/courses/0424311). A relational database to hold the STIX-D Corpus.
