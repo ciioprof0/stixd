@@ -1,4 +1,4 @@
--- Create a trigger to enforce the mutual exclusivity of preposition and gender (stix_corpus_12.sql)
+-- Create a trigger to enforce the mutual exclusivity of preposition and gender
 -- DROP TRIGGER IF EXISTS stixd_corpus.trg_lexicon_preposition_gender
 DELIMITER //
 CREATE TRIGGER stixd_corpus.trg_lexicon_preposition_gender
