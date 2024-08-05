@@ -1,0 +1,4 @@
+{"rule":"POSSESSIVE_APOSTROPHE","sentence":"^\\QThe special determiners nobody but , nothing but , and their variant no ... but are used with bare plural noun phrases, bare mass noun phrases or proper names.\\E$"}
+{"rule":"ENGLISH_WORD_REPEAT_RULE","sentence":"^\\Qconditional sentences (if-then sentences)\nlogical negation\nnegation as failure\nmodality\nsentence subordination\\E$"}
+{"rule":"WHO_NOUN","sentence":"^\\Qundef they, them, themselves their, their own that, whose\nneutr it, itself its, its own which\nhuman he/she, she/he, him/her, her/him, himself/herself, herself/himself his/her, her/his, his/her own, her/his own who\nmasc he, him, himself his, his own\nfem she, her, herself her, her own\\E$"}
+{"rule":"ADMIT_ENJOY_VB","sentence":"^\\QIt is also recommended to define a third singular form for each infinitive form, and vice versa.\\E$"}
