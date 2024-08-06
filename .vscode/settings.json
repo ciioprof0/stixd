@@ -95,5 +95,21 @@
         "uncared",
         "uncompiled",
         "vires"
+    ],
+    "sqltools.connections": [
+        {
+            "mysqlOptions": {
+                "authProtocol": "default",
+                "enableSsl": "Disabled"
+            },
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 3306,
+            "driver": "MySQL",
+            "name": "your_connection",
+            "database": "stixd_corpus",
+            "username": "your_username",
+            "password": "your_password"
+        }
     ]
 }

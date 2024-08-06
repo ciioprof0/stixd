@@ -35,11 +35,11 @@ CREATE PROCEDURE stixd_corpus.sp_check_lexicon_constraints(
     IN new_gender VARCHAR(7)
 )
 BEGIN
+    DECLARE prohibited_word_found INT DEFAULT 0;
     -- Step 1: Check prolog constraints
     CALL stixd_corpus.check_prolog_constraints(new_base_form);
 
     -- Step 2: Check prohibited words
-    DECLARE prohibited_word_found INT DEFAULT 0;
     SELECT COUNT(*)
     INTO prohibited_word_found
     FROM stixd_corpus.prohibited_words

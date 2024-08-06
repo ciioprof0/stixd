@@ -6,7 +6,7 @@ WHERE NOT EXISTS (
 );
 
 INSERT INTO stixd_corpus.prolog_constraints (description, pattern, message, auto_correct)
-SELECT * FROM (SELECT 'The first character must not be a digit or a hyphen.', '^[^0-9-]', 'The first character must not be a digit or a hyphen.', TRUE) AS tmp
+SELECT * FROM (SELECT 'The first character must not be a digit or a hyphen.', '^[^0-9-]', 'First character must not be a digit or a hyphen.', TRUE) AS tmp
 WHERE NOT EXISTS (
     SELECT 1 FROM stixd_corpus.prolog_constraints WHERE description = 'The first character must not be a digit or a hyphen.'
 );
@@ -18,7 +18,7 @@ WHERE NOT EXISTS (
 );
 
 INSERT INTO stixd_corpus.prolog_constraints (description, pattern, message, auto_correct)
-SELECT * FROM (SELECT 'Symbols special for Prolog (e.g., apostrophe) must be escaped.', '', 'Symbols special for Prolog (e.g., apostrophe) must be escaped.', TRUE) AS tmp
+SELECT * FROM (SELECT 'Symbols special for Prolog (e.g., apostrophe) must be escaped.', '', 'Escape symbols special for Prolog (e.g., apostrophe).', TRUE) AS tmp
 WHERE NOT EXISTS (
     SELECT 1 FROM stixd_corpus.prolog_constraints WHERE description = 'Symbols special for Prolog (e.g., apostrophe) must be escaped.'
 );
