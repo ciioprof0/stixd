@@ -1,6 +1,6 @@
--- Create the obj_doc_jt table in the specified database
-DROP TABLE IF EXISTS stixd_corpus.obj_doc_jt;
-CREATE TABLE stixd_corpus.obj_doc_jt (
+-- Create the stixd_corpus.obj_doc_jt table
+-- DROP TABLE IF EXISTS stixd_corpus.obj_doc_jt;
+CREATE TABLE IF NOT EXISTS stixd_corpus.obj_doc_jt (
     obj_id VARCHAR(292),
     doc_id INT,
     PRIMARY KEY (obj_id, doc_id),

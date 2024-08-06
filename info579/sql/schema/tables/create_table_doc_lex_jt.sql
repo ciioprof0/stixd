@@ -1,6 +1,6 @@
--- Create the doc_lex_jt table in the specified database
-DROP TABLE IF EXISTS stixd_corpus.doc_lex_jt;
-CREATE TABLE stixd_corpus.doc_lex_jt (
+-- Create the stixd_corpus.doc_lex_jt table
+-- DROP TABLE IF EXISTS stixd_corpus.doc_lex_jt;
+CREATE TABLE IF NOT EXISTS stixd_corpus.doc_lex_jt (
     doc_id INT,
     lex_id INT,
     PRIMARY KEY (doc_id, lex_id),

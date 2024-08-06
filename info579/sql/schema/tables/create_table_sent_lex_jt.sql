@@ -1,6 +1,6 @@
--- Create the sent_lex_jt table in the specified database
-DROP TABLE IF EXISTS stixd_corpus.sent_lex_jt;
-CREATE TABLE stixd_corpus.sent_lex_jt (
+-- Create the stixd_corpus.sent_lex_jt table
+-- DROP TABLE IF EXISTS stixd_corpus.sent_lex_jt;
+CREATE TABLE IF NOT EXISTS stixd_corpus.sent_lex_jt (
     sent_id INT,
     lex_id INT,
     PRIMARY KEY (sent_id, lex_id),

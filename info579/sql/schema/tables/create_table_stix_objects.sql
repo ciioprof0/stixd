@@ -1,6 +1,6 @@
--- Create the stix_objects table in the specified database
-DROP TABLE IF EXISTS stixd_corpus.stix_objects;
-CREATE TABLE stixd_corpus.stix_objects (
+-- Create the stixd_corpus.stix_objects table
+-- DROP TABLE IF EXISTS stixd_corpus.stix_objects;
+CREATE TABLE IF NOT EXISTS stixd_corpus.stix_objects (
     obj_id VARCHAR(292) PRIMARY KEY,
     type VARCHAR(255),
     created_by_ref VARCHAR(255),
@@ -21,3 +21,5 @@ CREATE TABLE stixd_corpus.stix_objects (
     related_to JSON
 );
 -- SHOW CREATE TABLE stixd_corpus.stix_objects;
+
+-- Populating table done from Python script.

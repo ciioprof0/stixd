@@ -1,6 +1,6 @@
--- Create the obj_lex_jt table in the specified database
-DROP TABLE IF EXISTS stixd_corpus.obj_lex_jt;
-CREATE TABLE stixd_corpus.obj_lex_jt (
+-- Create the stixd_corpus.obj_lex_jt table
+-- DROP TABLE IF EXISTS stixd_corpus.obj_lex_jt;
+CREATE TABLE IF NOT EXISTS stixd_corpus.obj_lex_jt (
     obj_id VARCHAR(292),
     lex_id INT,
     PRIMARY KEY (obj_id, lex_id),

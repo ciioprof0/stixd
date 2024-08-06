@@ -1,4 +1,4 @@
--- Create the trigger to check for prohibited intersections (stix_corpus_17.sql)
+-- Create the trigger to check for prohibited word_class intersections of word_class and preposition
 -- DROP TRIGGER IF EXISTS stixd_corpus.trg_lexicon_prohibited_intersections;
 DELIMITER //
 CREATE TRIGGER stixd_corpus.trg_lexicon_prohibited_intersections

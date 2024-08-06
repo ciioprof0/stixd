@@ -13,7 +13,6 @@ def main():
         "../../sql/schema/tables/05_create_table_stix_objects.sql",
         "../../sql/schema/tables/06_create_table_documents.sql",
         "../../sql/schema/tables/07_create_table_sentences.sql",
-        "../../sql/schema/tables/08_create_table_validation_results.sql",
         "../../sql/schema/tables/09_create_table_lexicon.sql",
         "../../sql/schema/tables/20_create_table_obj_doc_jt.sql",
         "../../sql/schema/tables/21_create_table_doc_sent_jt.sql",

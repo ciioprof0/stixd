@@ -10,6 +10,6 @@ DB_NAME="stixd_corpus"
 
 # Create the database
 echo "Creating database..."
-mysql -u $DB_USER -p$DB_PASSWORD < ../../sql/setup/00_create_database.sql
+mysql -u $DB_USER -p$DB_PASSWORD < ../../sql/setup/create_database.sql
 
 echo "Database created successfully."

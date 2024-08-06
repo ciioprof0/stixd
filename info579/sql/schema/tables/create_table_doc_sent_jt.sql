@@ -1,6 +1,6 @@
--- Create the doc_sent_jt table in the specified database (stix_corpus_20.sql)
-DROP TABLE IF EXISTS stixd_corpus.doc_sent_jt;
-CREATE TABLE stixd_corpus.doc_sent_jt (
+-- Create the stixd_corpus.doc_sent_jt table
+-- DROP TABLE IF EXISTS stixd_corpus.doc_sent_jt;
+CREATE TABLE IF NOT EXISTS stixd_corpus.doc_sent_jt (
     doc_id INT,
     sent_id INT,
     PRIMARY KEY (doc_id, sent_id),

@@ -1,4 +1,4 @@
--- Create procedure to check for prolog constraints (stix_corpus_18.sql)
+-- Create procedure to check for prolog constraints )
 DELIMITER //
 CREATE PROCEDURE stixd_corpus.check_prolog_constraints (IN base_form VARCHAR(255))
 BEGIN

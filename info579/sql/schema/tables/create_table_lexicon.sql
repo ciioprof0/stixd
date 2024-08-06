@@ -1,6 +1,6 @@
--- Create the lexicon table in the specified database
-DROP TABLE IF EXISTS stixd_corpus.lexicon;
-CREATE TABLE stixd_corpus.lexicon (
+-- Create the stixd_corpus.lexicon table
+-- DROP TABLE IF EXISTS stixd_corpus.lexicon;
+CREATE TABLE IF NOT EXISTS stixd_corpus.lexicon (
     lex_id INT AUTO_INCREMENT PRIMARY KEY,
     word_class VARCHAR(31),
     base_form VARCHAR(255),
