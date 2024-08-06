@@ -3,6 +3,7 @@
 CREATE TABLE IF NOT EXISTS stixd_corpus.sentences (
     sent_id INT AUTO_INCREMENT PRIMARY KEY,
     raw_sent TEXT,
+    raw_text_hash CHAR(64) UNIQUE,
     proc_sent JSON
 );
 -- SHOW CREATE TABLE stixd_corpus.sentences;

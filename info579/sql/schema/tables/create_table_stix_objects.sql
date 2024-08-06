@@ -18,7 +18,8 @@ CREATE TABLE IF NOT EXISTS stixd_corpus.stix_objects (
     extensions JSON,
     derived_from JSON,
     duplicate_of JSON,
-    related_to JSON
+    related_to JSON,
+    other_properties JSON
 );
 -- SHOW CREATE TABLE stixd_corpus.stix_objects;
 
