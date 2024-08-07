@@ -10,12 +10,13 @@ Phase 1 of the project started during the Summer 2024 academic session. It inclu
 - [INFO 579](https://catalog.arizona.edu/courses/0424311). A relational database to hold the STIX-D Corpus.
 - [INFO 523](https://catalog.arizona.edu/courses/0399651). A natural language processing ([NLP](https://en.wikipedia.org/wiki/Natural_language_processing)) pipeline for CNL development.
 
-### LING 508: STIX-D Lexicon Importer
+### LING 508: STIX-D Corpus Builder
 
 #### Overview
 This module focuses on developing an application to extract descriptions from STIX objects, parsing the description texts into documents, sentences, and words to form a comprehensive corpus. The project aligns with the Controlled Natural Language (CNL) development for Structured Threat Information eXpression (STIX) within the Cyber Threat Intelligence (CTI) domain.
 
 #### Functional Components
+Below are the functional components implement so far for the STIX-D Corpus Builder:
 
 ##### Clex Importer
 `clex_importer.py` handles importing the ACE Common Lexicon (Clex) into the STIX-D Corpus Database, parsing the content, and saving lexical entries into the database.
@@ -43,9 +44,6 @@ This module focuses on developing an application to extract descriptions from ST
 
 ##### UUID Generation
 `gen_uuid.py` and `gen_clex_uuid.py` handle generating UUIDs for STIX objects and Clex entries, respectively.
-
-##### NLP Processor
-`nlp_processor.py` will contain functions for processing natural language text for CNL development.
 
 #### Testing
 Unit tests are located in the `tests` directory, utilizing `pytest` to ensure the functionality of various components.
