@@ -4,6 +4,7 @@
 This module focuses on developing an application to extract descriptions from STIX objects, parsing the description texts into documents, sentences, and words to form a comprehensive corpus. The project aligns with the Controlled Natural Language (CNL) development for Structured Threat Information eXpression (STIX) within the Cyber Threat Intelligence (CTI) domain.
 
 #### Directory Structure
+````plaintext
 LING508
 │
 ├── docs
@@ -33,6 +34,7 @@ LING508
 ├── app.py
 ├── form.html
 └── README.md
+````
 
 #### Functional Components
 
