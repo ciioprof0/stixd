@@ -38,25 +38,18 @@ class ClexImporter:
 
     def _read_clex_file(self) -> str:
         """Reads the Clex file content from the given file path."""
-        # print(f"Reading Clex file: {self.clex_file_path}")
-        with open(self.clex_file_path, 'r', encoding='utf-8') as file:
-            # print("Clex file read successfully.")
-            # return file.read()
-            pass
+        pass
 
     def _parse_clex_line(self, line: str) -> Tuple[str, str, str, Optional[str]]:
         """Parses a single line of the Clex file to extract the word_tag, word_form, and optional arguments."""
         try:
-            # print(f"Parsing line: {line}")
             word_tag = line.split('(')[0].strip()
             parts = line.split('(')[1].rstrip(').').split(',')
             word_form = parts[0].strip().strip("'")
             logical_symbol = parts[1].strip()
             third_arg = parts[2].strip() if len(parts) > 2 else None
-            # print(f"Parsed values - word_tag: {word_tag}, word_form: {word_form}, logical_symbol: {logical_symbol}, third_arg: {third_arg}")
             return word_tag, word_form, logical_symbol, third_arg
         except IndexError as e:
-            # print(f"IndexError while parsing line: {line} - {e}")
             raise
 
     def _generate_hash(self, word_tag: str, word_form: str) -> str:
@@ -114,15 +107,13 @@ class ClexImporter:
                 else:
                     self.db_repo.link_existing_entry(tag_form_hash)
         except Exception as e:
-            # print(f"An error occurred: {e}")
-            pass
+            raise e
 
 # Define Main Body of Script
 if __name__ == "__main__":
     db_repo = MySQLRepository(DB_CONNECTION_PARAMS)
     clex_importer = ClexImporter(db_repo, CLEX_FILE_PATH)
     try:
-        clex_importer.import_clex_entries()
-        # print("Script completed successfully.")
+        clex_importer.import_clex_entries(CLEX_FILE_PATH)
     except Exception as e:
-        # print(f"An error occurred: {e}")
+        print(f"An error occurred: {e}")
