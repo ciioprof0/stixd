@@ -1,3 +1,4 @@
+# src/mysql_repository.py
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
@@ -6,18 +7,38 @@ Module for interacting with a MySQL database.
 """
 
 from typing import Any, Dict, List, Optional, Tuple
-import mysql.connector
-from src.repository import AbstractRepository
+import mysql.connector  # MySQL database connector
+from src.repository import AbstractRepository  # Abstract base class for repository pattern
+
+# Database connection parameters
+DB_CONNECTION_PARAMS = {
+    'host': 'localhost',
+    'user': 'your_username',
+    'password': 'your_password',
+    'database': 'stixd_corpus'
+}
 
 class MySQLRepository(AbstractRepository):
+    """
+    MySQL Repository for managing database interactions.
+    """
 
-    def __init__(self, connection_params: Dict[str, str]):
-        self.connection_params = connection_params
+    def __init__(self):
+        """
+        Initialize the MySQL repository with connection parameters.
+        """
+        self.connection_params = DB_CONNECTION_PARAMS
 
     def _connect(self):
+        """
+        Establish a connection to the MySQL database.
+        """
         return mysql.connector.connect(**self.connection_params)
 
     def load_entries(self) -> List[Dict[str, Any]]:
+        """
+        Load all entries from the lexicon table.
+        """
         conn = self._connect()
         cursor = conn.cursor()
         cursor.execute("SELECT * FROM lexicon")
@@ -26,6 +47,9 @@ class MySQLRepository(AbstractRepository):
         return [self._map_row_to_entry(row) for row in rows]
 
     def save_entry(self, entry: Dict[str, Any]) -> None:
+        """
+        Save a single entry to the lexicon table.
+        """
         conn = self._connect()
         cursor = conn.cursor()
         try:
@@ -44,6 +68,9 @@ class MySQLRepository(AbstractRepository):
             conn.close()
 
     def get_last_insert_id(self) -> int:
+        """
+        Get the last inserted ID in the lexicon table.
+        """
         conn = self._connect()
         cursor = conn.cursor()
         cursor.execute("SELECT LAST_INSERT_ID()")
@@ -52,6 +79,9 @@ class MySQLRepository(AbstractRepository):
         return last_id
 
     def link_entry_with_stix(self, lex_id: int, stix_uuid: str) -> None:
+        """
+        Link a lexicon entry with a STIX object.
+        """
         conn = self._connect()
         cursor = conn.cursor()
         try:
@@ -67,6 +97,9 @@ class MySQLRepository(AbstractRepository):
             conn.close()
 
     def find_entry_by_id(self, tag_form_hash: str) -> Optional[Dict[str, Any]]:
+        """
+        Find a lexicon entry by its tag form hash.
+        """
         conn = self._connect()
         cursor = conn.cursor()
         cursor.execute("SELECT * FROM lexicon WHERE tag_form_hash = %s", (tag_form_hash,))
@@ -75,10 +108,15 @@ class MySQLRepository(AbstractRepository):
         return self._map_row_to_entry(row) if row else None
 
     def link_existing_entry(self, tag_form_hash: str) -> None:
-        # Implement linking logic if needed for your schema
+        """
+        Link an existing entry (placeholder method, to be implemented as needed).
+        """
         pass
 
     def find_stix_object_by_id(self, obj_id: str) -> Optional[Dict[str, Any]]:
+        """
+        Find a STIX object by its ID.
+        """
         conn = self._connect()
         cursor = conn.cursor()
         cursor.execute("SELECT * FROM stix_objects WHERE obj_id = %s", (obj_id,))
@@ -87,6 +125,9 @@ class MySQLRepository(AbstractRepository):
         return self._map_row_to_stix_object(row) if row else None
 
     def save_stix_object(self, stix_object: Dict[str, Any]) -> None:
+        """
+        Save a STIX object to the database.
+        """
         conn = self._connect()
         cursor = conn.cursor()
         cursor.execute(
@@ -124,6 +165,9 @@ class MySQLRepository(AbstractRepository):
         conn.close()
 
     def _map_row_to_entry(self, row: Tuple) -> Dict[str, Any]:
+        """
+        Map a database row to a lexicon entry dictionary.
+        """
         if not row:
             return None
         return {
@@ -139,6 +183,9 @@ class MySQLRepository(AbstractRepository):
         }
 
     def _map_row_to_stix_object(self, row: Tuple) -> Dict[str, Any]:
+        """
+        Map a database row to a STIX object dictionary.
+        """
         if not row:
             return None
         return {

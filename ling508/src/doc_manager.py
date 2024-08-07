@@ -1,6 +1,7 @@
 from typing import Dict
 from src.repository import AbstractRepository
 from src.nlp_processor import NLPProcessor
+from src.mysql_repository import MySQLRepository
 
 class DocumentManager:
     def __init__(self, db_repo: AbstractRepository, nlp_processor: NLPProcessor):
@@ -18,3 +19,16 @@ class DocumentManager:
     def process_document_text(self, doc_id: int):
         # Implementation to process document text and update proc_text, metadata
         pass
+
+if __name__ == "__main__":
+    db_repo = MySQLRepository()
+    nlp_processor = NLPProcessor()
+    document_manager = DocumentManager(db_repo, nlp_processor)
+    # Example usage
+    stix_object = {
+        "obj_id": "example-stix-id",
+        "description": "Example STIX object"
+    }  # Replace with actual STIX object
+    doc_id = document_manager.create_document(stix_object)
+    document_manager.link_document(stix_object["obj_id"], doc_id)
+    document_manager.process_document_text(doc_id)

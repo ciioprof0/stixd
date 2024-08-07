@@ -1,6 +1,7 @@
 from typing import List, Dict
 from src.repository import AbstractRepository
 from src.doc_manager import DocumentManager
+from src.mysql_repository import MySQLRepository
 
 class StixImporter:
     def __init__(self, db_repo: AbstractRepository, doc_manager: DocumentManager):
@@ -15,9 +16,17 @@ class StixImporter:
     def save_to_db(self, stix_object: Dict):
         self.db_repo.save_stix_object(stix_object)
         if stix_object['description']:
-            doc_id = self.document_manager.create_document(stix_object)
-            self.document_manager.link_document(stix_object['obj_id'], doc_id)
+            doc_id = self.doc_manager.create_document(stix_object)
+            self.doc_manager.link_document(stix_object['obj_id'], doc_id)
 
     def read_json(self, file: str) -> Dict:
         # Implementation to read JSON file
         pass
+
+if __name__ == "__main__":
+    db_repo = MySQLRepository()
+    doc_manager = DocumentManager()
+    stix_importer = StixImporter(db_repo, doc_manager)
+    # Add the list of JSON files to be imported
+    json_files = ["path/to/stix_file1.json", "path/to/stix_file2.json"]
+    stix_importer.import_stix_objects(json_files)

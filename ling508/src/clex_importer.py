@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+# src/clex_importer.py
+
 """
 Module for importing the ACE Common Lexicon (Clex) into the STIX-D Corpus Database.
 
@@ -22,13 +24,6 @@ from src.gen_clex_uuid import generate_stix_uuid  # Function to generate STIX UU
 CLEX_FILE_PATH = "lexicon/test_clex.pl"
 STIX_TYPE = "x-stixd-clex"
 UUID_VER = 4
-
-DB_CONNECTION_PARAMS = {
-    'host': 'localhost',
-    'user': 'your_username',
-    'password': 'your_password',
-    'database': 'stixd_corpus'
-}
 
 # Define Script Classes
 class ClexImporter:
@@ -109,3 +104,9 @@ class ClexImporter:
             return "Import successful"
         except Exception as e:
             raise e
+
+if __name__ == "__main__":
+    db_repo = MySQLRepository()
+    importer = ClexImporter(db_repo, CLEX_FILE_PATH)
+    result = importer.import_clex_entries(CLEX_FILE_PATH)
+    print(result)
