@@ -6,7 +6,7 @@ import sys
 
 # Import the main function from gen_clex_uuid
 sys.path.insert(0, '../app')
-from app.gen_clex_uuid import main
+from ling508.app.gen_clex_uuid import main
 
 # Define test cases
 test_cases = [
@@ -16,7 +16,7 @@ test_cases = [
 
 # Mock response content
 mock_file_contents = {
-    "https://raw.githubusercontent.com/ciioprof0/stixd/03c934281777fecd3edb1d8622310bbf0839c17d/tests/test_clex.pl": "mock content for ciioprof0 test_clex.pl",
+    "https://raw.githubusercontent.com/ciioprof0/stixd/03c934281777fecd3edb1d8622310bbf0839c17d/tests/test_clex.pl": "mock content for test_clex.pl",
     "https://raw.githubusercontent.com/Attempto/Clex/20960a5ce07776cb211a8cfb25dc8c81fcdf25e2/clex_lexicon.pl": "mock content for Attempto clex_lexicon.pl"
 }
 

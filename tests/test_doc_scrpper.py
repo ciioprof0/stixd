@@ -7,7 +7,7 @@ import pytest
 import requests
 from bs4 import BeautifulSoup
 from unittest.mock import patch, mock_open
-from ling508.app.doc_scrapper import *
+from app.doc_scrapper import *
 
 # Mock HTML content for testing
 HTML_CONTENT = '''
