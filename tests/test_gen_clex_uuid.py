@@ -6,7 +6,7 @@ import sys
 
 # Import the main function from gen_clex_uuid
 sys.path.insert(0, '../app')
-from app.gen_clex_uuid import main
+from app.gen_clex_uuid import main as gen_uuid
 
 # Define test cases
 test_cases = [
@@ -36,7 +36,7 @@ def test_generate_uuid(mock_get, uuid_version, object_type, file_url, expected_s
     captured_output = StringIO()
     sys.stdout = captured_output
 
-    main(uuid_version, object_type, file_url)
+    gen_uuid(uuid_version, object_type, file_url)
 
     # Reset redirect.
     sys.stdout = sys.__stdout__
