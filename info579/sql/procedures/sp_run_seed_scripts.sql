@@ -1,3 +1,4 @@
+-- Seed all the ACE 6.7 tables in the database (sp_run_seed_scripts.sql)
 DELIMITER //
 
 CREATE PROCEDURE stixd_corpus.run_seed_scripts()

@@ -1,10 +1,11 @@
--- Create the stixd_corpus.obj_doc_jt table
--- DROP TABLE IF EXISTS stixd_corpus.obj_doc_jt;
-CREATE TABLE IF NOT EXISTS stixd_corpus.obj_doc_jt (
-    obj_id VARCHAR(292),
+-- Create the stixd_corpus.doc_sent_jt table (create_table_doc_sent_jt.sql)
+-- DROP TABLE IF EXISTS stixd_corpus.doc_sent_jt;
+CREATE TABLE IF NOT EXISTS stixd_corpus.doc_sent_jt (
     doc_id INT,
-    PRIMARY KEY (obj_id, doc_id),
-    FOREIGN KEY (obj_id) REFERENCES stixd_corpus.stix_objects(obj_id),
-    FOREIGN KEY (doc_id) REFERENCES stixd_corpus.documents(doc_id)
+    sent_id INT,
+    PRIMARY KEY (doc_id, sent_id),
+    FOREIGN KEY (doc_id) REFERENCES stixd_corpus.documents(doc_id),
+    FOREIGN KEY (sent_id) REFERENCES stixd_corpus.sentences(sent_id)
 );
--- SHOW CREATE TABLE stixd_corpus.obj_doc_jt;
+-- SHOW CREATE TABLE stixd_corpus.doc_sent_jt;
+-- Populating table done from primary tables.

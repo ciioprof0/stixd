@@ -28,18 +28,21 @@ class MySQLRepository(AbstractRepository):
     def save_entry(self, entry: Dict[str, Any]) -> None:
         conn = self._connect()
         cursor = conn.cursor()
-        cursor.execute(
-            """
-            CALL sp_check_lexicon_constraints(%s, %s, %s, %s)
-            """,
-            (entry['word_tag'], entry['word_form'], entry['logical_symbol'], entry['third_arg'])
-        )
-        cursor.execute(
-            "INSERT INTO lexicon (word_tag, word_form, logical_symbol, third_arg, tag_form_hash) VALUES (%s, %s, %s, %s, %s)",
-            (entry['word_tag'], entry['word_form'], entry['logical_symbol'], entry['third_arg'], entry['tag_form_hash'])
-        )
-        conn.commit()
-        conn.close()
+        try:
+            cursor.execute(
+                "INSERT INTO lexicon (word_tag, word_form, logical_symbol, third_arg, tag_form_hash) VALUES (%s, %s, %s, %s, %s)",
+                (entry['word_tag'], entry['word_form'], entry['logical_symbol'], entry['third_arg'], entry['tag_form_hash'])
+            )
+            conn.commit()
+            lex_id = cursor.lastrowid
+
+            if 'stix_obj_id' in entry:
+                self.link_entry_with_stix(lex_id, entry['stix_obj_id'])
+        except mysql.connector.Error as err:
+            print(f"Error: {err}")
+            conn.rollback()
+        finally:
+            conn.close()
 
     def get_last_insert_id(self) -> int:
         conn = self._connect()
@@ -52,12 +55,17 @@ class MySQLRepository(AbstractRepository):
     def link_entry_with_stix(self, lex_id: int, stix_uuid: str) -> None:
         conn = self._connect()
         cursor = conn.cursor()
-        cursor.execute(
-            "INSERT INTO obj_lex_jt (lex_id, obj_id) VALUES (%s, %s)",
-            (lex_id, stix_uuid)
-        )
-        conn.commit()
-        conn.close()
+        try:
+            cursor.execute(
+                "INSERT INTO obj_lex_jt (lex_id, obj_id) VALUES (%s, %s)",
+                (lex_id, stix_uuid)
+            )
+            conn.commit()
+        except mysql.connector.Error as err:
+            print(f"Error: {err}")
+            conn.rollback()
+        finally:
+            conn.close()
 
     def find_entry_by_id(self, tag_form_hash: str) -> Optional[Dict[str, Any]]:
         conn = self._connect()

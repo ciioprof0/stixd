@@ -1,4 +1,4 @@
--- Create the database
+-- Create the database (create_database.sql)
 DROP DATABASE IF EXISTS stixd_corpus;
 CREATE DATABASE IF NOT EXISTS stixd_corpus
     CHARACTER SET = utf8mb4

@@ -4,8 +4,7 @@
 """
 Module for importing the ACE Common Lexicon (Clex) into the STIX-D Corpus Database.
 
-This script reads the Clex lexicon file from the local directory, parses the content,
-and imports the lexical entries into the stixd_corpus.lexicon table.
+This script reads the Clex lexicon file from the local directory, parses the content, and imports the lexical entries into the stixd_corpus.lexicon table.
 """
 
 # Import Standard Library Modules

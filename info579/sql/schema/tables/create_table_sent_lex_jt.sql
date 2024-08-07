@@ -1,4 +1,4 @@
--- Create the stixd_corpus.sent_lex_jt table
+-- Create the stixd_corpus.sent_lex_jt table (create_table_sent_lex_jt.sql)
 -- DROP TABLE IF EXISTS stixd_corpus.sent_lex_jt;
 CREATE TABLE IF NOT EXISTS stixd_corpus.sent_lex_jt (
     sent_id INT,
@@ -8,3 +8,4 @@ CREATE TABLE IF NOT EXISTS stixd_corpus.sent_lex_jt (
     FOREIGN KEY (lex_id) REFERENCES stixd_corpus.lexicon(lex_id)
 );
 -- SHOW CREATE TABLE stixd_corpus.sent_lex_jt;
+-- Populating table done from primary tables.
