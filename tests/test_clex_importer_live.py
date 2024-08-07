@@ -46,7 +46,7 @@ def db_repo():
 def test_import_clex_entries(db_repo, lex_id, word_tag, word_form, logical_symbol, third_arg, tag_form_hash):
     """Tests the ClexImporter service layer function by importing and validating lexicon entries."""
     # Setup: Create an instance of the service layer
-    clex_file_path = "path/to/your/clex_file.pl"  # Specify the actual path to your Clex file
+    clex_file_path = "lexicon/test_clex.pl"  # Specify the actual path to your Clex file
     importer = ClexImporter(db_repo, clex_file_path)
 
     # Provide test input data
