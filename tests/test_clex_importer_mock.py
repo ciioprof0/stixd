@@ -5,7 +5,7 @@ from unittest.mock import patch
 # Load mock data from CSV file
 def load_mock_data():
     mock_data = {}
-    with open('../lexicon/test_clex_importer.csv', newline='') as csvfile:
+    with open('lexicon/test_clex_importer.csv', newline='') as csvfile:
         reader = csv.DictReader(csvfile)
         for row in reader:
             lex_id = int(row['lex_id'])
