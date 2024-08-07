@@ -29,5 +29,7 @@ jobs:
         pip install pytest
 
     - name: Run tests
+      env:
+        PYTHONPATH: ${{ github.workspace }}/app
       run: |
         pytest tests --verbose
