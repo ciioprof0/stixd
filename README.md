@@ -13,7 +13,7 @@ Phase 1 of the project started during the Summer 2024 academic session. It inclu
 ### LING 508: STIX-D Corpus Builder
 
 #### Overview
-This module focuses on developing an application to extract descriptions from STIX objects, parsing the description texts into documents, sentences, and words to form a comprehensive corpus. The project aligns with the Controlled Natural Language (CNL) development for Structured Threat Information eXpression (STIX) within the Cyber Threat Intelligence (CTI) domain.
+This module focuses on developing an application to extract descriptions from STIX objects, parsing the description texts into documents, sentences, and words to form a comprehensive corpus. 
 
 #### Functional Components
 Below are the functional components implement so far for the STIX-D Corpus Builder:
