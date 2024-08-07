@@ -57,7 +57,7 @@ class ClexImporter:
         hash_object = hashlib.sha256(f"{word_tag}{word_form}".encode('utf-8'))
         return hash_object.hexdigest()
 
-    def import_clex_entries(self, uri: str) -> None:
+    def import_clex_entries(self, uri: str) -> str:
         """Main method to import Clex entries into the database."""
         try:
             response = requests.get(uri)
@@ -106,14 +106,6 @@ class ClexImporter:
                     self.db_repo.link_entry_with_stix(lex_id, stix_object['obj_id'])
                 else:
                     self.db_repo.link_existing_entry(tag_form_hash)
+            return "Import successful"
         except Exception as e:
             raise e
-
-# Define Main Body of Script
-if __name__ == "__main__":
-    db_repo = MySQLRepository(DB_CONNECTION_PARAMS)
-    clex_importer = ClexImporter(db_repo, CLEX_FILE_PATH)
-    try:
-        clex_importer.import_clex_entries(CLEX_FILE_PATH)
-    except Exception as e:
-        print(f"An error occurred: {e}")

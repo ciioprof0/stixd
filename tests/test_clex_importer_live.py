@@ -46,7 +46,8 @@ def db_repo():
 def test_import_clex_entries(db_repo, lex_id, word_tag, word_form, logical_symbol, third_arg, tag_form_hash):
     """Tests the ClexImporter service layer function by importing and validating lexicon entries."""
     # Setup: Create an instance of the service layer
-    importer = ClexImporter(db_repo)
+    clex_file_path = "path/to/your/clex_file.pl"  # Specify the actual path to your Clex file
+    importer = ClexImporter(db_repo, clex_file_path)
 
     # Provide test input data
     test_input = {
@@ -59,7 +60,7 @@ def test_import_clex_entries(db_repo, lex_id, word_tag, word_form, logical_symbo
     }
 
     # Call the function with test input
-    return_value = importer.import_clex_entries("http://example.com/test_clex.pl")  # Assuming this method takes a URI
+    return_value = importer.import_clex_entries("https://github.com/ciioprof0/stixd/raw/main/lexicon/test_clex.pl")
 
     # Assertions
     assert return_value == "Import successful", f"Unexpected return value: {return_value}"
