@@ -29,15 +29,14 @@ class MySQLRepository(AbstractRepository):
         conn = self._connect()
         cursor = conn.cursor()
         try:
-            cursor.execute(
-                "INSERT INTO lexicon (word_tag, word_form, logical_symbol, third_arg, tag_form_hash) VALUES (%s, %s, %s, %s, %s)",
-                (entry['word_tag'], entry['word_form'], entry['logical_symbol'], entry['third_arg'], entry['tag_form_hash'])
-            )
-            conn.commit()
+            cursor.execute("INSERT INTO lexicon (word_tag, word_form, tag_form_hash, logical_symbol, third_arg) VALUES (%s, %s, %s, %s, %s)", (entry['word_tag'], entry['word_form'], entry['tag_form_hash'], entry['logical_symbol'], entry['third_arg']))
             lex_id = cursor.lastrowid
+            print(f"Inserted entry with lex_id: {lex_id}")
 
-            if 'stix_obj_id' in entry:
+            if 'stix_obj_id' in entry and lex_id:
                 self.link_entry_with_stix(lex_id, entry['stix_obj_id'])
+
+            conn.commit()
         except mysql.connector.Error as err:
             print(f"Error: {err}")
             conn.rollback()
