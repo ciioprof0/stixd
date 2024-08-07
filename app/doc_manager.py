@@ -1,6 +1,6 @@
 from typing import Dict
-from repository import AbstractRepository
-from nlp_processor import NLPProcessor
+from app.repository import AbstractRepository
+from app.nlp_processor import NLPProcessor
 
 class DocumentManager:
     def __init__(self, db_repo: AbstractRepository, nlp_processor: NLPProcessor):

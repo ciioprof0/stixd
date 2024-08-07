@@ -7,7 +7,7 @@ Module for interacting with a MySQL database.
 
 from typing import Any, Dict, List, Optional, Tuple
 import mysql.connector
-from repository import AbstractRepository
+from app.repository import AbstractRepository
 
 class MySQLRepository(AbstractRepository):
 
