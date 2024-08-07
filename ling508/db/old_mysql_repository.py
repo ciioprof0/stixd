@@ -3,8 +3,8 @@
 
 from typing import Any, Dict, List, Optional, Set
 import mysql.connector
-from db.repository import AbstractRepository
-from model.lexical_entry import Lexeme
+from ling508.db.old_repository import AbstractRepository
+from app.lexicon_manager import Lexeme
 
 class MySQLRepository(AbstractRepository):
 

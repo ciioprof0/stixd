@@ -1,6 +1,6 @@
 -- Create procedure to check for prolog constraints )
 DELIMITER //
-CREATE PROCEDURE stixd_corpus.check_prolog_constraints (IN base_form VARCHAR(255))
+CREATE PROCEDURE stixd_corpus.check_prolog_constraints (IN word_form VARCHAR(255))
 BEGIN
     DECLARE done INT DEFAULT FALSE;
     DECLARE constraint_violation VARCHAR(255);
@@ -16,7 +16,7 @@ BEGIN
         IF done THEN
             LEAVE read_loop;
         END IF;
-        IF NOT (base_form REGEXP constraint_violation) THEN
+        IF NOT (word_form REGEXP constraint_violation) THEN
             SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = constraint_message;
         END IF;
     END LOOP;
