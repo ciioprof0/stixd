@@ -4,7 +4,7 @@
 This project explores the application of Natural Language Processing (NLP) techniques in the development of Controlled Natural Languages (CNLs). CNLs are simplified versions of natural languages with restricted grammar and vocabulary, designed to reduce ambiguity and complexity. The focus is on using NLP to enhance the accuracy and consistency of threat descriptions in Cyber Threat Intelligence (CTI).
 
 ## Relation to Class Topics
-Although specific NLP techniques were not discussed in this class, this project builds on the general principles of data mining covered in our coursework. It extends these principles to practical applications in developing CNLs tailored for cybersecurity, demonstrating the interdisciplinary nature of this field.
+Although specific NLP techniques were not discussed in this class, this project builds on the general principles of data mining covered in our coursework. It extends these principles to practical applications in developing CNLs tailored for cybersecurity, demonstrating the interdisciplinary nature of this field. NLP = supervised learning; neural nets; corpus; classification (covered); 
 
 ## Real-World Applications
 Standardized CNLs can significantly improve communication and analysis in cybersecurity. By providing a consistent and unambiguous way to describe threats, CNLs facilitate better information sharing and collaboration among cybersecurity professionals. This standardization can enhance threat detection, incident response, and overall cyber defense strategies.
