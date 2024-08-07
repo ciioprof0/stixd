@@ -6,7 +6,7 @@ import sys
 
 # Import the main function from gen_clex_uuid
 sys.path.insert(0, '../app')
-from app.gen_clex_uuid import main as gen_uuid
+from src.gen_clex_uuid import main as gen_uuid
 
 # Define test cases
 test_cases = [

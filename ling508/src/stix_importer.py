@@ -1,6 +1,6 @@
 from typing import List, Dict
-from app.repository import AbstractRepository
-from app.doc_manager import DocumentManager
+from src.repository import AbstractRepository
+from src.doc_manager import DocumentManager
 
 class StixImporter:
     def __init__(self, db_repo: AbstractRepository, doc_manager: DocumentManager):

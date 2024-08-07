@@ -30,6 +30,6 @@ jobs:
 
     - name: Run tests
       env:
-        PYTHONPATH: ${{ github.workspace }}/app
+        PYTHONPATH: ${{ github.workspace }}/ling508/app
       run: |
-        pytest tests --verbose
+        pytest ling508/tests --verbose

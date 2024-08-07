@@ -8,8 +8,8 @@ import os
 # Ensure the app directory is in the sys.path
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
-from app.clex_importer import ClexImporter  # Import the service layer
-from app.mysql_repository import MySQLRepository  # Import the MySQL repository
+from src.clex_importer import ClexImporter  # Import the service layer
+from src.mysql_repository import MySQLRepository  # Import the MySQL repository
 
 # Database connection configuration
 connection_params = {

@@ -1,5 +1,5 @@
-from app.repository import AbstractRepository
-from app.nlp_processor import NLPProcessor
+from src.repository import AbstractRepository
+from src.nlp_processor import NLPProcessor
 
 class LexiconManager:
     def __init__(self, db_repo: AbstractRepository, nlp_processor: NLPProcessor):
