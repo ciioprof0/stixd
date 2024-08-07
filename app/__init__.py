@@ -7,12 +7,13 @@ from .gen_clex_uuid import main as GenerateClexUUID
 # from .gen_uuid import main as GenerateUUID
 from .lexicon_manager import LexiconManager
 from .mysql_repository import MySQLRepository
-from .repository import Repository
+from .repository import AbstractRepository
 from .sent_manager import SentenceManager
 from .stix_importer import StixImporter
 from .nlp_processor import NLPProcessor
 
 __all__ = [
+    "AbstractRepository",
     "ClexImporter",
     "DocumentManager",
     "DocumentScrapper",
@@ -20,7 +21,6 @@ __all__ = [
     # "GenerateUUID",
     "LexiconManager",
     "MySQLRepository",
-    "Repository",
     "SentenceManager",
     "StixImporter",
     "NLPProcessor"
