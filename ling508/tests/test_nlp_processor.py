@@ -1,10 +1,10 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# test/test_nlp_processor.py
+# tests/test_nlp_processor.py
 
 import pytest
 from unittest.mock import patch, MagicMock
-from app.nlp_processor import NLPProcessor
+from ling508.app.nlp_processor import NLPProcessor
 
 @pytest.fixture
 def nlp_processor():

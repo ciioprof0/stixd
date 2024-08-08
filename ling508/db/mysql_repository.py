@@ -8,7 +8,7 @@ Module for interacting with a MySQL database.
 
 import mysql.connector  # MySQL database connector
 from typing import Any, Dict, List, Optional, Tuple
-from db.repository import AbstractRepository  # Abstract base class for repository pattern
+from ling508.db.repository import AbstractRepository  # Abstract base class for repository pattern
 
 # Database connection parameters
 DB_CONNECTION_PARAMS = {

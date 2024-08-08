@@ -1,10 +1,10 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# test/test_clex_importer_live.py
+# tests/test_clex_importer_live.py
 
 import pytest
-from app.clex_importer import ClexImporter  # Import the service layer
-from db.mysql_repository import MySQLRepository  # Import the MySQL repository
+from ling508.app.clex_importer import ClexImporter  # Import the service layer
+from ling508.db.mysql_repository import MySQLRepository  # Import the MySQL repository
 
 def get_lexicon_entry(lex_id):
     """Fetches a lexicon entry from the database by lex_id."""

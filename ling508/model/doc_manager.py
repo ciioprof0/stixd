@@ -2,9 +2,9 @@
 # -*- coding: utf-8 -*-
 # model/doc_manager.py
 
-from app.nlp_processor import NLPProcessor
-from db.mysql_repository import MySQLRepository
-from db.repository import AbstractRepository
+from ling508.app.nlp_processor import NLPProcessor
+from ling508.db.mysql_repository import MySQLRepository
+from ling508.db.repository import AbstractRepository
 from typing import Dict
 
 class DocumentManager:

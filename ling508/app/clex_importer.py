@@ -15,8 +15,8 @@ from datetime import datetime, timezone
 from typing import Optional, Tuple  # Type hinting
 
 # Import Project-Specific Modules
-from app.gen_clex_uuid import generate_stix_uuid  # Function to generate STIX UUID
-from db.mysql_repository import MySQLRepository  # Provides database interaction
+from ling508.app.gen_clex_uuid import generate_stix_uuid  # Function to generate STIX UUID
+from ling508.db.mysql_repository import MySQLRepository  # Provides database interaction
 
 # Set Global Variables
 # Small, test Clex file

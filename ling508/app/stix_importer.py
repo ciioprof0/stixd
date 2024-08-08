@@ -3,9 +3,9 @@
 # app/stix_importer.py
 
 from typing import List, Dict
-from db.mysql_repository import MySQLRepository
-from db.repository import AbstractRepository
-from model.doc_manager import DocumentManager
+from ling508.db.mysql_repository import MySQLRepository
+from ling508.db.repository import AbstractRepository
+from ling508.model.doc_manager import DocumentManager
 
 class StixImporter:
     def __init__(self, db_repo: AbstractRepository, doc_manager: DocumentManager):

@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# test/test_gen_clex_uuid.py
+# tests/test_gen_clex_uuid.py
 
 import pytest
 import requests

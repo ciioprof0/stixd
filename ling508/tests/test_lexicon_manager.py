@@ -1,12 +1,12 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# test/test_lexicon_manager_live.py
+# tests/test_lexicon_manager_live.py
 
 import pytest
 from unittest.mock import patch, MagicMock
-from db.mysql_repository import MySQLRepository
-from model.lexicon_manager import LexiconManager
-from app.nlp_processor import NLPProcessor
+from ling508.app.nlp_processor import NLPProcessor
+from ling508.db.mysql_repository import MySQLRepository
+from ling508.model.lexicon_manager import LexiconManager
 
 @pytest.fixture
 def lexicon_manager():

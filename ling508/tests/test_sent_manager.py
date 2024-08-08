@@ -1,12 +1,12 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# test/test_sent_manager_live.py
+# tests/test_sent_manager_live.py
 
 import pytest
 from unittest.mock import patch, MagicMock
-from db.mysql_repository import MySQLRepository
-from model.sent_manager import SentenceManager
-from app.nlp_processor import NLPProcessor
+from ling508.db.mysql_repository import MySQLRepository
+from ling508.model.sent_manager import SentenceManager
+from ling508.app.nlp_processor import NLPProcessor
 
 @pytest.fixture
 def sentence_manager():

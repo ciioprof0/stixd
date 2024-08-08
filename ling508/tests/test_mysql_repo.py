@@ -1,6 +1,10 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+# tests/test_mysql_repo.py
+
 import pytest
 from unittest.mock import patch, MagicMock
-from db.mysql_repository import MySQLRepository
+from ling508.db.mysql_repository import MySQLRepository
 
 @pytest.fixture
 def repository():

@@ -1,11 +1,10 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# test/test_doc_manager_live.py
+# tests/test_doc_manager_live.py
 
 import pytest
 from unittest.mock import patch, MagicMock
 
-import ling508
 from ling508.app.nlp_processor import NLPProcessor
 from ling508.db.mysql_repository import MySQLRepository
 from ling508.model.doc_manager import DocumentManager
