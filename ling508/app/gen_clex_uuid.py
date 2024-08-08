@@ -11,7 +11,6 @@ It can generate both UUIDv4 and UUIDv5.
 import uuid  # UUID generation
 import requests  # HTTP requests to fetch the file
 import argparse  # Command-line argument parsing
-import hashlib  # Hashing for UUIDv5
 import os  # To check if the path is a file
 
 # Define the namespace for UUIDv5
