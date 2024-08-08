@@ -12,7 +12,7 @@ DB_NAME="stixd_corpus"
 MYSQL_PATH="/c/Program Files/MySQL/MySQL Server 8.0/bin/mysql"
 
 # Absolute path to SQL files
-SQL_PATH="/d/OneDrive/Code/hltms/stixd/stixd/info579/sql/setup"
+SQL_PATH="/d/OneDrive/Code/hltms/stixd/info579/sql/setup"
 
 # Create the database
 echo "Creating database..."
