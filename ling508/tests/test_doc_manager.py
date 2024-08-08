@@ -4,9 +4,12 @@
 
 import pytest
 from unittest.mock import patch, MagicMock
-from db.mysql_repository import MySQLRepository
-from model.doc_manager import DocumentManager
-from app.nlp_processor import NLPProcessor
+
+import ling508
+from ling508.app.nlp_processor import NLPProcessor
+from ling508.db.mysql_repository import MySQLRepository
+from ling508.model.doc_manager import DocumentManager
+
 
 @pytest.fixture
 def document_manager():

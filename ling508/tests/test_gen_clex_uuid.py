@@ -7,7 +7,7 @@ import requests
 import sys
 from unittest.mock import patch
 from io import StringIO
-from app.gen_clex_uuid import main as gen_uuid
+from ling508.app.gen_clex_uuid import main as gen_uuid
 
 # Define test cases
 test_cases = [
