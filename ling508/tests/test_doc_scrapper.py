@@ -6,7 +6,7 @@ import pytest
 import requests
 from bs4 import BeautifulSoup
 from unittest.mock import patch, mock_open
-from app.doc_scrapper import allows_scraping, convert_html_to_markdown, fetch_html, process_url, save_markdown
+from ling508.app.doc_scrapper import allows_scraping, convert_html_to_markdown, fetch_html, process_url, save_markdown
 
 # Mock HTML content for testing
 HTML_CONTENT = '''
