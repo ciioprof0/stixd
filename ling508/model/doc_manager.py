@@ -1,38 +1,46 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
 # model/doc_manager.py
 
 from ling508.app.nlp_processor import NLPProcessor
 from ling508.db.mysql_repository import MySQLRepository
-from ling508.db.repository import AbstractRepository
+# from ling508.db.repository import AbstractRepository
 from typing import Dict
 
 class DocumentManager:
-    def __init__(self, db_repo: AbstractRepository, nlp_processor: NLPProcessor):
+    def __init__(self, db_repo: MySQLRepository, nlp_processor: NLPProcessor):
         self.db_repo = db_repo
         self.nlp_processor = nlp_processor
 
     def create_document(self, stix_object: Dict) -> int:
-        # Implementation to create a document
-        pass
+        conn = self.db_repo._connect()  # Use MySQLRepository to connect to the DB
+        cursor = conn.cursor()
+        cursor.execute(
+            "INSERT INTO documents (obj_id, description) VALUES (%s, %s)",
+            (stix_object['obj_id'], stix_object['description'])
+        )
+        doc_id = cursor.lastrowid
+        conn.commit()
+        conn.close()
+        return doc_id
 
     def link_document(self, stix_id: str, doc_id: int):
-        # Implementation to link document in obj_doc_jt
-        pass
+        conn = self.db_repo._connect()  # Use MySQLRepository to connect to the DB
+        cursor = conn.cursor()
+        cursor.execute(
+            "INSERT INTO obj_doc_jt (obj_id, doc_id) VALUES (%s, %s)",
+            (stix_id, doc_id)
+        )
+        conn.commit()
+        conn.close()
 
     def process_document_text(self, doc_id: int):
-        # Implementation to process document text and update proc_text, metadata
-        pass
+        conn = self.db_repo._connect()  # Use MySQLRepository to connect to the DB
+        cursor = conn.cursor()
 
-if __name__ == "__main__":
-    db_repo = MySQLRepository()
-    nlp_processor = NLPProcessor()
-    document_manager = DocumentManager(db_repo, nlp_processor)
-    # Example usage
-    stix_object = {
-        "obj_id": "example-stix-id",
-        "description": "Example STIX object"
-    }  # Replace with actual STIX object
-    doc_id = document_manager.create_document(stix_object)
-    document_manager.link_document(stix_object["obj_id"], doc_id)
-    document_manager.process_document_text(doc_id)
+        # Assuming process_text is implemented in NLPProcessor and returns processed text and metadata
+        processed_text, metadata = self.nlp_processor.process_text("dummy text")  # Replace with actual text fetching logic
+        cursor.execute(
+            "UPDATE documents SET proc_text = %s, metadata = %s WHERE doc_id = %s",
+            (processed_text, metadata, doc_id)
+        )
+        conn.commit()
+        conn.close()
