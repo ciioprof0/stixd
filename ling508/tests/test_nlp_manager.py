@@ -4,13 +4,13 @@
 
 import pytest
 from unittest.mock import patch, MagicMock
-from ling508.app.nlp_processor import NLPProcessor
+from ling508.model.nlp_manager import NLPManager
 
 @pytest.fixture
 def nlp_processor():
     mock_model = MagicMock()
     mock_config = MagicMock()
-    return NLPProcessor(mock_model, mock_config)
+    return NLPManager(mock_model, mock_config)
 
 def test_process_text(nlp_processor):
     text = "This is a test text."

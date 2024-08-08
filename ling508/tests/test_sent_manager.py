@@ -4,7 +4,7 @@
 
 import pytest
 from unittest.mock import patch, MagicMock
-from ling508.app.nlp_processor import NLPProcessor
+from ling508.model.nlp_manager import NLPManager
 from ling508.db.mysql_repository import MySQLRepository
 from ling508.model.sent_manager import SentenceManager
 
@@ -14,7 +14,7 @@ def sentence_manager():
         db_repo = MySQLRepository()
         mock_model = MagicMock()
         mock_config = MagicMock()
-        nlp_processor = NLPProcessor(mock_model, mock_config)
+        nlp_processor = NLPManager(mock_model, mock_config)
         return SentenceManager(db_repo, nlp_processor)
 
 def test_create_sentence(sentence_manager):

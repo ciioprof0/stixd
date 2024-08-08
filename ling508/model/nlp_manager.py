@@ -1,10 +1,10 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# app/nlp_processor.py
+# model/nlp_manager.py
 
 from typing import Tuple, Dict
 
-class NLPProcessor:
+class NLPManager:
     def __init__(self, model, config):
         self.model = model
         self.config = config

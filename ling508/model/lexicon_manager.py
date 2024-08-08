@@ -2,11 +2,11 @@
 # -*- coding: utf-8 -*-
 # model/lexicon_manager.py
 
-from ling508.app.nlp_processor import NLPProcessor
+from ling508.model.nlp_manager import NLPManager
 from ling508.db.mysql_repository import MySQLRepository
 
 class LexiconManager:
-    def __init__(self, db_repo: MySQLRepository, nlp_processor: NLPProcessor):
+    def __init__(self, db_repo: MySQLRepository, nlp_processor: NLPManager):
         self.db_repo = db_repo
         self.nlp_processor = nlp_processor
 
@@ -45,5 +45,5 @@ class LexiconManager:
 
 if __name__ == "__main__":
     db_repo = MySQLRepository()
-    nlp_processor = NLPProcessor()
+    nlp_processor = NLPManager()
     lexicon_manager = LexiconManager(db_repo, nlp_processor)
