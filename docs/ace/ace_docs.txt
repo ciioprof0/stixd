@@ -1,0 +1,5 @@
+http://attempto.ifi.uzh.ch/site/docs/ace_nutshell.html
+http://attempto.ifi.uzh.ch/site/docs/ace_constructionrules.html
+http://attempto.ifi.uzh.ch/site/docs/ace_interpretationrules.html
+http://attempto.ifi.uzh.ch/site/docs/ace_troubleshooting.html
+http://attempto.ifi.uzh.ch/site/docs/ace_lexicon.html
