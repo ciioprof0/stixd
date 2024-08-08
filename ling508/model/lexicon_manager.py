@@ -1,6 +1,10 @@
-from src.repository import AbstractRepository
-from src.nlp_processor import NLPProcessor
-from src.mysql_repository import MySQLRepository
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+# model/lexicon_manager.py
+
+from app.nlp_processor import NLPProcessor
+from db.mysql_repository import MySQLRepository
+from db.repository import AbstractRepository
 
 class LexiconManager:
     def __init__(self, db_repo: AbstractRepository, nlp_processor: NLPProcessor):

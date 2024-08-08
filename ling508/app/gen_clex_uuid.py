@@ -1,5 +1,7 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
+# app/gen_clex_uuid.py
+
 """
 This script generates a UUID for a given plain text file.
 It can generate both UUIDv4 and UUIDv5.

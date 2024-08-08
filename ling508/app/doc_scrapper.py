@@ -1,7 +1,9 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+# app/doc_scrapper.py
+
 """
-Script to convert HTML content from URLs to Markdown, respecting robots meta tags.
+Script to scrape HTML content from URLs and convert to Markdown, respecting robots meta tags.
 """
 
 # Import Standard Library Modules

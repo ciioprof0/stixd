@@ -161,3 +161,7 @@ cython_debug/
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
 your_connection.session.sql
+
+# Ignore all Word document files
+*.doc
+*.docx

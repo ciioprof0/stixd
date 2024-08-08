@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify
-from src.clex_importer import ClexImporter
-from src.mysql_repository import MySQLRepository
+from app.clex_importer import ClexImporter
+from db.mysql_repository import MySQLRepository
 
 app = Flask(__name__)
 

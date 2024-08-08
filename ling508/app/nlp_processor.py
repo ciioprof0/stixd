@@ -1,3 +1,7 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+# app/nlp_processor.py
+
 from typing import Tuple, Dict
 
 class NLPProcessor:

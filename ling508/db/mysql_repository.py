@@ -1,14 +1,14 @@
-# src/mysql_repository.py
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+# db/mysql_repository.py
 
 """
 Module for interacting with a MySQL database.
 """
 
-from typing import Any, Dict, List, Optional, Tuple
 import mysql.connector  # MySQL database connector
-from src.repository import AbstractRepository  # Abstract base class for repository pattern
+from typing import Any, Dict, List, Optional, Tuple
+from db.repository import AbstractRepository  # Abstract base class for repository pattern
 
 # Database connection parameters
 DB_CONNECTION_PARAMS = {

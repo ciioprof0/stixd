@@ -1,7 +1,11 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+# model/doc_manager.py
+
+from app.nlp_processor import NLPProcessor
+from db.mysql_repository import MySQLRepository
+from db.repository import AbstractRepository
 from typing import Dict
-from src.repository import AbstractRepository
-from src.nlp_processor import NLPProcessor
-from src.mysql_repository import MySQLRepository
 
 class DocumentManager:
     def __init__(self, db_repo: AbstractRepository, nlp_processor: NLPProcessor):

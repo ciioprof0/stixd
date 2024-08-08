@@ -1,7 +1,11 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+# app/stix_importer.py
+
 from typing import List, Dict
-from src.repository import AbstractRepository
-from src.doc_manager import DocumentManager
-from src.mysql_repository import MySQLRepository
+from db.mysql_repository import MySQLRepository
+from db.repository import AbstractRepository
+from model.doc_manager import DocumentManager
 
 class StixImporter:
     def __init__(self, db_repo: AbstractRepository, doc_manager: DocumentManager):

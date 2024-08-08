@@ -1,27 +1,15 @@
-# tests/test_clex_importer_live.py
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+# test/test_clex_importer_live.py
 
 import pytest
-import mysql.connector
-import sys
-import os
-
-# Ensure the app directory is in the sys.path
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-
-from src.clex_importer import ClexImporter  # Import the service layer
-from src.mysql_repository import MySQLRepository  # Import the MySQL repository
-
-# Database connection configuration
-connection_params = {
-    'user': 'your_username',
-    'password': 'your_password',
-    'host': 'localhost',
-    'database': 'stixd_corpus'
-}
+from app.clex_importer import ClexImporter  # Import the service layer
+from db.mysql_repository import MySQLRepository  # Import the MySQL repository
 
 def get_lexicon_entry(lex_id):
     """Fetches a lexicon entry from the database by lex_id."""
-    conn = mysql.connector.connect(**connection_params)
+    repo = MySQLRepository()
+    conn = repo._connect()
     cursor = conn.cursor()
     query = "SELECT lex_id, word_tag, word_form, logical_symbol, third_arg, tag_form_hash FROM lexicon WHERE lex_id = %s"
     cursor.execute(query, (lex_id,))
@@ -33,7 +21,7 @@ def get_lexicon_entry(lex_id):
 def db_repo():
     """Fixture for database repository, setup and teardown."""
     # Setup database connection or repository instance
-    repo = MySQLRepository(connection_params)
+    repo = MySQLRepository()
     yield repo
     # Teardown code here, if needed
 

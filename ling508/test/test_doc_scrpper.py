@@ -1,13 +1,12 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-
-# tests/test_doc_scrapper.py
+# test/test_gen_doc_scrapper.py
 
 import pytest
 import requests
 from bs4 import BeautifulSoup
 from unittest.mock import patch, mock_open
-from src.doc_scrapper import allows_scraping, convert_html_to_markdown, fetch_html, process_url, save_markdown
+from app.doc_scrapper import allows_scraping, convert_html_to_markdown, fetch_html, process_url, save_markdown
 
 # Mock HTML content for testing
 HTML_CONTENT = '''

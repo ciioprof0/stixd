@@ -1,3 +1,7 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+# test/test_clex_importer_mock.py
+
 import pytest
 import csv
 from unittest.mock import patch

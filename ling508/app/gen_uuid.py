@@ -1,5 +1,7 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
+# app/gen_uuid.py
+
 """
 This script generates UUIDs (both UUIDv4 and UUIDv5) for STIX objects based on STIX 2.1 specifications.
 """
