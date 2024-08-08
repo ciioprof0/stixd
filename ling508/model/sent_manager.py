@@ -4,32 +4,46 @@
 
 from ling508.app.nlp_processor import NLPProcessor
 from ling508.db.mysql_repository import MySQLRepository
-from ling508.db.repository import AbstractRepository
 
 class SentenceManager:
-    def __init__(self, db_repo: AbstractRepository, nlp_processor: NLPProcessor):
+    def __init__(self, db_repo: MySQLRepository, nlp_processor: NLPProcessor):
         self.db_repo = db_repo
         self.nlp_processor = nlp_processor
 
     def create_sentence(self, doc_id: int, sentence: str) -> int:
-        # Implementation to create a sentence
-        pass
+        conn = self.db_repo._connect()
+        cursor = conn.cursor()
+        cursor.execute(
+            "INSERT INTO sentences (doc_id, sentence_text) VALUES (%s, %s)",
+            (doc_id, sentence)
+        )
+        sent_id = cursor.lastrowid
+        conn.commit()
+        conn.close()
+        return sent_id
 
     def link_sentence(self, doc_id: int, sent_id: int):
-        # Implementation to link sentence in doc_sent_jt
-        pass
+        conn = self.db_repo._connect()
+        cursor = conn.cursor()
+        cursor.execute(
+            "INSERT INTO doc_sent_jt (doc_id, sent_id) VALUES (%s, %s)",
+            (doc_id, sent_id)
+        )
+        conn.commit()
+        conn.close()
 
     def process_sentence_text(self, sent_id: int):
-        # Implementation to process sentence text and update proc_sent
-        pass
+        conn = self.db_repo._connect()
+        cursor = conn.cursor()
+        processed_text = self.nlp_processor.process_text("dummy sentence")  # Replace with actual sentence fetching logic
+        cursor.execute(
+            "UPDATE sentences SET proc_sent = %s WHERE sent_id = %s",
+            (processed_text, sent_id)
+        )
+        conn.commit()
+        conn.close()
 
 if __name__ == "__main__":
     db_repo = MySQLRepository()
     nlp_processor = NLPProcessor()
     sentence_manager = SentenceManager(db_repo, nlp_processor)
-    # Example usage
-    # doc_id = 1  # Replace with actual doc_id
-    # sentence = "This is an example sentence."
-    # sent_id = sentence_manager.create_sentence(doc_id, sentence)
-    # sentence_manager.link_sentence(doc_id, sent_id)
-    # sentence_manager.process_sentence_text(sent_id)

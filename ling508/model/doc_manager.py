@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 # model/doc_manager.py
 
 from ling508.app.nlp_processor import NLPProcessor

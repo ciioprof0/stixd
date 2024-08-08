@@ -12,7 +12,9 @@ from ling508.model.lexicon_manager import LexiconManager
 def lexicon_manager():
     with patch('mysql.connector.connect'):
         db_repo = MySQLRepository()
-        nlp_processor = NLPProcessor()
+        mock_model = MagicMock()
+        mock_config = MagicMock()
+        nlp_processor = NLPProcessor(mock_model, mock_config)
         return LexiconManager(db_repo, nlp_processor)
 
 def test_create_lexicon_entry(lexicon_manager):

@@ -1,3 +1,7 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+# tests/test_doc_manager.py
+
 import pytest
 from unittest.mock import patch, MagicMock
 from ling508.app.nlp_processor import NLPProcessor
