@@ -25,9 +25,13 @@ logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
 )
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='D:/OneDrive/Code/hltms/stixd/ling508/web')
 
-@app.route('/import_clex', methods=['POST'])
+@app.route('/ling508/web/stixd.html')
+def serve_form():
+    return app.send_static_file('stixd.html')
+
+
 @app.route('/import_clex', methods=['POST'])
 def import_clex():
     """Imports Clex entries from a URI."""
