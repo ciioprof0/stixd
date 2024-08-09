@@ -165,3 +165,5 @@ your_connection.session.sql
 # Ignore all Word document files
 *.doc
 *.docx
+
+test_clex_importer_live.py
