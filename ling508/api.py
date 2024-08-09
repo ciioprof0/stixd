@@ -25,7 +25,7 @@ logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
 )
 
-app = Flask(__name__, static_folder='D:/OneDrive/Code/hltms/stixd/ling508/web')
+app = Flask(__name__, static_folder='/ling508/web')
 
 @app.route('/ling508/web/stixd.html')
 def serve_form():
