@@ -3,39 +3,6 @@
 #### Overview
 This module focuses on developing an application to extract descriptions from STIX objects, parsing the description texts into documents, sentences, and words to form a comprehensive corpus. The project aligns with the Controlled Natural Language (CNL) development for Structured Threat Information eXpression (STIX) within the Cyber Threat Intelligence (CTI) domain.
 
-#### Directory Structure
-````plaintext
-LING508
-│
-├── docs
-│   └── documentation.md
-│
-├── src
-│   ├── __init__.py
-│   ├── clex_importer.py
-│   ├── doc_manager.py
-│   ├── doc_scrapper.py
-│   ├── gen_clex_uuid.py
-│   ├── gen_uuid.py
-│   ├── lexicon_manager.py
-│   ├── mysql_repository.py
-│   ├── nlp_processor.py
-│   ├── repository.py
-│   ├── sent_manager.py
-│   └── stix_importer.py
-│
-├── tests
-│   ├── __init__.py
-│   ├── test_clex_importer_live.py
-│   ├── test_clex_importer_mock.py
-│   ├── test_doc_scrapper.py
-│   └── test_gen_clex_uuid.py
-│
-├── app.py
-├── form.html
-└── README.md
-````
-
 #### Functional Components
 
 ##### Clex Importer
@@ -65,8 +32,8 @@ LING508
 ##### UUID Generation
 `gen_uuid.py` and `gen_clex_uuid.py` handle generating UUIDs for STIX objects and Clex entries, respectively.
 
-##### NLP Processor
-`nlp_processor.py` will contain functions for processing natural language text for CNL development.
+##### NLP Manager
+`nlp_manager.py` will contain functions for processing natural language text for CNL development.
 
 #### Testing
 Unit tests are located in the `tests` directory, utilizing `pytest` to ensure the functionality of various components.
