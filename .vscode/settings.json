@@ -97,7 +97,8 @@
         "Ulex",
         "uncared",
         "uncompiled",
-        "vires"
+        "vires",
+        "werkzeug"
     ],
     "sqltools.connections": [
         {
