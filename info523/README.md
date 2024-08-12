@@ -1,7 +1,7 @@
 # Data Mining in the STIX-D Project
 
 ## Background
-This project explores the application of data mining techniques within the context of the STIX-D project, focusing on Natural Language Processing (NLP) for the development of Controlled Natural Languages (CNLs). CNLs are structured, simplified versions of natural languages, designed to minimize ambiguity and complexity in specific domains such as Cyber Threat Intelligence (CTI). The goal is to leverage data mining methods to enhance the accuracy and consistency of threat descriptions in CTI, thereby improving communication and analysis.
+This presentation explores the application of data mining techniques within the context of the STIX-D project, focusing on Natural Language Processing (NLP) for the development of Controlled Natural Languages (CNLs). CNLs are structured, simplified versions of natural languages, designed to minimize ambiguity and complexity in specific domains such as Cyber Threat Intelligence (CTI). The goal is to leverage data mining methods to enhance the accuracy and consistency of `description` properties in STIX objects, thereby improving communication and analysis.
 
 ## Relation to INFO 523 Topics
 While this course did not specifically cover NLP techniques, the project applies the general principles of data mining discussed in our coursework to practical applications in cybersecurity. The use of supervised learning, classification, and corpus-based analysis—key topics in data mining—are extended to the development and validation of CNLs. This interdisciplinary approach demonstrates how data mining can support the creation of precise and unambiguous language structures, critical for effective CTI.
