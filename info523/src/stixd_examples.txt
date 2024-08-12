@@ -1,0 +1,5 @@
+A variant of the cryptolocker family
+The Evil Org threat actor group
+This file is part of Poison Ivy
+A particular form of spear phishing where the attacker claims that the target had won a contest, including personal details, to get them to click on a link.
+Incidents usually feature a shared TTP of a wildcat being released within the building containing network access, scaring users to leave their computers without locking them first. Still determining where the threat actors are getting the wildcats.
