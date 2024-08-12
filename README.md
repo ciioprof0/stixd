@@ -1,6 +1,6 @@
 # STIX Descriptions CNL Repository
 
-For my capstone project in the [HLTMS](https://linguistics.arizona.edu/online-ms-hlt) program, I aim to develop a Controlled Natural Language ([CNL](https://en.wikipedia.org/wiki/Controlled_natural_language)) and necessary tools and databases for Structured Threat Information eXpression  ([STIX](https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html)) descriptions in Cyber Threat Intelligence ([CTI](https://www.crowdstrike.com/cybersecurity-101/threat-intelligence/)). The project, named ‘STIX-D’, will be a subset of Attempto Controlled English ([ACE](http://attempto.ifi.uzh.ch/)).
+For my capstone project in the [HLTMS](https://linguistics.arizona.edu/online-ms-hlt) program, I aim to develop a Controlled Natural Language ([CNL](https://en.wikipedia.org/wiki/Controlled_natural_language)) and necessary tools and databases for Structured Threat Information eXpression  ([STIX](https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html)) `descriptions` in the Cyber Threat Intelligence ([CTI](https://www.crowdstrike.com/cybersecurity-101/threat-intelligence/)) domain. The project, named ‘STIX-D’, will be a subset of Attempto Controlled English ([ACE](http://attempto.ifi.uzh.ch/)).
 
 ## Phase 1: Build a STIX-D Corpus
 
