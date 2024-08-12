@@ -8,7 +8,7 @@ Phase 1 of the project started during the Summer 2024 academic session. It inclu
 
 - [LING 508](https://catalog.arizona.edu/courses/0198961). An application to extract descriptions from STIX objects and parse the description texts into documents, sentences, and words, forming a corpus.
 - [INFO 579](https://catalog.arizona.edu/courses/0424311). A relational database to hold the STIX-D Corpus.
-- [INFO 523](https://catalog.arizona.edu/courses/0399651). A natural language processing ([NLP](https://en.wikipedia.org/wiki/Natural_language_processing)) pipeline for CNL development.
+- [INFO 523](https://catalog.arizona.edu/courses/0399651). Data mining in STIX-D Project.
 
 ### LING 508: STIX-D Corpus Builder
 
