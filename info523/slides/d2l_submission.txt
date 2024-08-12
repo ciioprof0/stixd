@@ -1,0 +1,7 @@
+Title: NLP for CNL Customization
+
+Abstract: This presentation focuses on the application of Natural Language Processing (NLP) techniques to the development of a Controlled Natural Language (CNL) within the context of the STIX-D project. The project demonstrates how NLP can be leveraged to create unambiguous and standardized threat descriptions, which are crucial for effective cyber threat intelligence sharing. Through a series of examples, the presentation showcases the process of text classification and tagging, emphasizing the role of data mining in refining and validating the CNL. The results highlight the potential of integrating CNL with NLP to enhance the clarity and interoperability of threat intelligence in cybersecurity operations.
+
+Slides: https://github.com/ciioprof0/stixd/tree/main/info523/slides
+Code & Examples: https://github.com/ciioprof0/stixd/tree/main/info523/src 
+Main Project: https://github.com/ciioprof0/stixd
