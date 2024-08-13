@@ -5,37 +5,40 @@ services:
     build: .
     container_name: flask-app
     ports:
-      - "5000:5000"  # Exposes Flask API on localhost:5000
+      - "5000:5000"
     environment:
       - FLASK_ENV=development
       - DATABASE_HOST=mysql
       - DATABASE_PORT=3306
       - DATABASE_USER=your_username
       - DATABASE_PASSWORD=your_password
-      - DATABASE_NAME=stix_db
+      - DATABASE_NAME=stixd_corpus
     depends_on:
       - mysql
     volumes:
       - .:/app
+    mem_limit: 512m  # Set a memory limit for Flask app
 
   mysql:
     image: mysql:8.0
     container_name: mysql
     environment:
       MYSQL_ROOT_PASSWORD: your_password
-      MYSQL_DATABASE: test_db
+      MYSQL_DATABASE: stixd_corpus
     ports:
-      - "3306:3306"  # Exposes MySQL on localhost:3306
+      - "3306:3306"
     volumes:
       - mysql_data:/var/lib/mysql
+    mem_limit: 1g  # Set a memory limit for MySQL
 
   selenium:
     image: selenium/standalone-chrome:latest
     container_name: selenium
     ports:
-      - "4444:4444"  # To interact with Selenium from the locahost
+      - "4444:4444"
     depends_on:
       - flask-app
+    mem_limit: 512m  # Set a memory limit for Selenium
 
 volumes:
   mysql_data:
