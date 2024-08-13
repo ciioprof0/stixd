@@ -167,3 +167,8 @@ your_connection.session.sql
 *.docx
 
 test_clex_importer_live.py
+ling508/tests/test_end_to_end_local.py
+info523/slides/Presentation_1.mp4
+info523/slides/Presentation_2.Rev_1.pdf
+info523/slides/Presentation_3.Rev_1.pdf
+info523/slides/Presentation_8.Rev_1.pdf
