@@ -17,18 +17,13 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Set up Docker
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y docker-compose
-
     - name: Set up Docker Compose
-      run: docker-compose version
+      uses: docker/compose-action@v2.1.0
 
     - name: Build and Run Services
       run: |
         docker-compose up -d --build
-        docker-compose exec flask-app pytest ling508/tests --verbose
+        docker-compose exec -T flask-app pytest ling508/tests --verbose
 
     - name: Tear down Docker Compose
       if: always()
