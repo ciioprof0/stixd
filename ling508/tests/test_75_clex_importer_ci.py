@@ -2,8 +2,10 @@
 # -*- coding: utf-8 -*-
 # tests/test_75_clex_importer_cik.py
 
-import pytest
+"""Unit tests for the ClexImporter class in the clex_importer module."""
+
 from unittest.mock import MagicMock, patch
+import pytest
 from ling508.app.clex_importer import ClexImporter
 from ling508.db.mysql_repository import MySQLRepository
 
@@ -19,7 +21,8 @@ def clex_importer(mock_db_repo):
 
 @patch('ling508.app.clex_importer.requests.get')
 @patch('ling508.app.clex_importer.generate_stix_uuid')
-def test_import_clex_entries(mock_generate_stix_uuid, mock_requests_get, clex_importer, mock_db_repo):
+def test_import_clex_entries(mock_generate_stix_uuid, mock_requests_get,
+                             clex_importer, mock_db_repo):
     """Test the import_clex_entries function."""
     # Mock the requests.get response
     mock_response = MagicMock()
@@ -43,7 +46,7 @@ def test_import_clex_entries(mock_generate_stix_uuid, mock_requests_get, clex_im
 
     # Assertions
     assert result == "Import successful"
-    mock_requests_get.assert_called_once_with("http://test-uri")
+    mock_requests_get.assert_called_once_with("http://test-uri", timeout=20)
     mock_generate_stix_uuid.assert_called_once_with(4, "x-stixd-clex", "http://test-uri")
     assert mock_db_repo.save_stix_object.called
     assert mock_db_repo.save_entry.call_count == 3
