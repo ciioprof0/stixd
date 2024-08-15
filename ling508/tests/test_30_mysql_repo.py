@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# tests/test_mysql_repo.py
+# tests/test_30_mysql_repo.py
 
 import pytest
 from unittest.mock import patch, MagicMock

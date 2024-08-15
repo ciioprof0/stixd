@@ -1,72 +1,72 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# tests/test_sent_manager_live.py
+# tests/test_57_lexicon_manager_live.py
 
 import pytest
 from unittest.mock import patch, MagicMock
 from ling508.model.nlp_manager import NLPManager
 from ling508.db.mysql_repository import MySQLRepository
-from ling508.model.sent_manager import SentenceManager
+from ling508.model.lexicon_manager import LexiconManager
 
 @pytest.fixture
-def sentence_manager():
+def lexicon_manager():
     with patch('mysql.connector.connect'):
         db_repo = MySQLRepository()
         mock_model = MagicMock()
         mock_config = MagicMock()
         nlp_processor = NLPManager(mock_model, mock_config)
-        return SentenceManager(db_repo, nlp_processor)
+        return LexiconManager(db_repo, nlp_processor)
 
-def test_create_sentence(sentence_manager):
-    mock_conn = patch('mysql.connector.connect').start()
-    mock_cursor = MagicMock()
-    mock_conn.return_value.cursor.return_value = mock_cursor
-
-    doc_id = 1
-    sentence = "This is an example sentence."
-
-    # Mock the create_sentence method
-    sentence_manager.create_sentence(doc_id, sentence)
-    mock_cursor.execute.assert_called_once_with(
-        "INSERT INTO sentences (doc_id, sentence_text) VALUES (%s, %s)",
-        (doc_id, sentence)
-    )
-    mock_conn.return_value.commit.assert_called_once()
-
-    patch.stopall()
-
-def test_link_sentence(sentence_manager):
-    mock_conn = patch('mysql.connector.connect').start()
-    mock_cursor = MagicMock()
-    mock_conn.return_value.cursor.return_value = mock_cursor
-
-    doc_id = 1
-    sent_id = 1
-
-    # Mock the link_sentence method
-    sentence_manager.link_sentence(doc_id, sent_id)
-    mock_cursor.execute.assert_called_once_with(
-        "INSERT INTO doc_sent_jt (doc_id, sent_id) VALUES (%s, %s)",
-        (doc_id, sent_id)
-    )
-    mock_conn.return_value.commit.assert_called_once()
-
-    patch.stopall()
-
-def test_process_sentence_text(sentence_manager):
+def test_create_lexicon_entry(lexicon_manager):
     mock_conn = patch('mysql.connector.connect').start()
     mock_cursor = MagicMock()
     mock_conn.return_value.cursor.return_value = mock_cursor
 
     sent_id = 1
-    processed_text = "Processed sentence text"
+    word = "example"
 
-    # Mock the process_sentence_text method
-    with patch.object(sentence_manager.nlp_processor, 'process_text', return_value=processed_text):
-        sentence_manager.process_sentence_text(sent_id)
+    # Mock the create_lexicon_entry method
+    lexicon_manager.create_lexicon_entry(sent_id, word)
+    mock_cursor.execute.assert_called_once_with(
+        "INSERT INTO lexicon (sent_id, word) VALUES (%s, %s)",
+        (sent_id, word)
+    )
+    mock_conn.return_value.commit.assert_called_once()
+
+    patch.stopall()
+
+def test_link_lexicon_entry(lexicon_manager):
+    mock_conn = patch('mysql.connector.connect').start()
+    mock_cursor = MagicMock()
+    mock_conn.return_value.cursor.return_value = mock_cursor
+
+    sent_id = 1
+    lex_id = 1
+
+    # Mock the link_lexicon_entry method
+    lexicon_manager.link_lexicon_entry(sent_id, lex_id)
+    mock_cursor.execute.assert_called_once_with(
+        "INSERT INTO sent_lex_jt (sent_id, lex_id) VALUES (%s, %s)",
+        (sent_id, lex_id)
+    )
+    mock_conn.return_value.commit.assert_called_once()
+
+    patch.stopall()
+
+def test_process_word(lexicon_manager):
+    mock_conn = patch('mysql.connector.connect').start()
+    mock_cursor = MagicMock()
+    mock_conn.return_value.cursor.return_value = mock_cursor
+
+    word = "example"
+    processed_word = "Processed example"
+
+    # Mock the process_word method
+    with patch.object(lexicon_manager.nlp_processor, 'process_text', return_value=processed_word):
+        lexicon_manager.process_word(word)
         mock_cursor.execute.assert_called_once_with(
-            "UPDATE sentences SET proc_sent = %s WHERE sent_id = %s",
-            (processed_text, sent_id)
+            "UPDATE lexicon SET proc_word = %s WHERE word = %s",
+            (processed_word, word)
         )
         mock_conn.return_value.commit.assert_called_once()
 

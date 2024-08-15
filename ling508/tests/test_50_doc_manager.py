@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# tests/test_doc_manager.py
+# tests/test_50_doc_manager.py
 
 import pytest
 from unittest.mock import patch, MagicMock

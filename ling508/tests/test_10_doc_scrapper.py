@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# tests/test_gen_doc_scrapper.py
+# tests/test_10_doc_scrapper.py
 
 import os
 import pytest
