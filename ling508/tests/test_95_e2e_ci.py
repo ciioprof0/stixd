@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# tests/test_95_e2e.py
+# tests/test_95_e2e_ci.py
 
 """ End-to-end test for the Flask app """
 
@@ -25,7 +25,7 @@ def init_driver():
     chrome_options = Options()
     chrome_options.add_argument("--window-size=640,480")
 
-    driver = webdriver.Chrome(options=chrome_options)  
+    driver = webdriver.Chrome(options=chrome_options)
     yield driver
     driver.quit()
 

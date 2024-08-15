@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# tests/test_75_clex_importer_mock.py
+# tests/test_75_clex_importer_cik.py
 
 import pytest
 from unittest.mock import MagicMock, patch
