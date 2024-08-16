@@ -51,7 +51,9 @@ def test_import_clex_entries(db_repo, lex_id, word_tag, word_form, logical_symbo
     return_value = importer.import_clex_entries("https://github.com/ciioprof0/stixd/raw/main/lexicon/test_clex.pl")
 
     # Assertions
-    assert return_value == "Import successful", f"Unexpected return value: {return_value}"
+# Assertions
+    assert return_value.startswith("Import successful"), f"Unexpected return value: {return_value}"
+
 
     # Validate the database change
     entry = get_lexicon_entry(lex_id)

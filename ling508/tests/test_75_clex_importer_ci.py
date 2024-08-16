@@ -45,7 +45,7 @@ def test_import_clex_entries(mock_generate_stix_uuid, mock_requests_get,
     result = clex_importer.import_clex_entries("http://test-uri")
 
     # Assertions
-    assert result == "Import successful"
+    assert result.startswith("Import successful")
     mock_requests_get.assert_called_once_with("http://test-uri", timeout=20)
     mock_generate_stix_uuid.assert_called_once_with(4, "x-stixd-clex", "http://test-uri")
     assert mock_db_repo.save_stix_object.called

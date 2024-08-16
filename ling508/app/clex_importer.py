@@ -59,7 +59,7 @@ class ClexImporter:
     def import_clex_entries(self, uri: str) -> str:
         """Main method to import Clex entries into the database."""
         try:
-            # Fetch Clex content from the given URI (assuming it's a web resource)
+            # Fetch Clex content from the given URI
             response = requests.get(uri, timeout=20)
             response.raise_for_status()
             clex_content = response.text
@@ -91,10 +91,17 @@ class ClexImporter:
             self.db_repo.save_stix_object(stix_object)
             print(f"Saved STIX object with ID: {stix_object['obj_id']}")
 
+            # Initialize counters
+            total_entries = 0
+            new_entries = 0
+            updated_links = 0
+
             # Process each line in the Clex content
             for line in clex_content.splitlines():
                 if not line.strip() or line.startswith('%'):
                     continue
+
+                total_entries += 1
 
                 # Parse the Clex line
                 word_tag, word_form, logical_symbol, third_arg = self._parse_clex_line(line)
@@ -110,6 +117,7 @@ class ClexImporter:
                 existing_entry = self.db_repo.find_entry_by_id(tag_form_hash)
                 if existing_entry:
                     print(f"Entry already exists for hash: {tag_form_hash}")
+                    updated_links += 1
                     continue
 
                 # Prepare the entry dictionary for insertion
@@ -127,10 +135,19 @@ class ClexImporter:
                     print(f"Linking lex_id {lex_id} with stix_object_id {stix_object['obj_id']}")
                     # Link the entry to the STIX object in the junction table
                     self.db_repo.link_entry_with_stix(lex_id, stix_object['obj_id'])
+                    new_entries += 1
                 else:
                     print(f"Error: Failed to retrieve lex_id after inserting entry for {word_tag} - {word_form}")
 
-            return "Import successful"
+            # Provide detailed feedback to the user
+            feedback = (
+                f"Import successful.\n"
+                f"New entries imported:    {new_entries:,}\n"
+                f"Existing entries linked: {updated_links:,}\n"
+                f"===============================\n"
+                f"Total entries processed: {total_entries:,}"
+            )
+            return feedback
 
         except Exception as e:
             print(f"Exception during import: {e}")

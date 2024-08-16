@@ -20,7 +20,7 @@ if not os.path.exists(LOG_DIR):
     os.makedirs(LOG_DIR)
 
 logging.basicConfig(
-    filename=os.path.join(LOG_DIR, 'app.log'),
+    filename=os.path.join(LOG_DIR, 'api.log'),
     level=logging.ERROR,  # Log only errors and critical issues
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
 )
