@@ -12,6 +12,7 @@ def repository():
         return MySQLRepository()
 
 def test_save_and_load_entry(repository):
+    """Test the save_entry and load_entries methods of the MySQLRepository class."""
     mock_conn = patch('mysql.connector.connect').start()
     mock_cursor = MagicMock()
     mock_conn.return_value.cursor.return_value = mock_cursor
@@ -24,8 +25,8 @@ def test_save_and_load_entry(repository):
         'third_arg': 'test_arg'
     }
 
-    # Mock the save_entry method
-    repository.save_entry(entry)
+    # Mock the save_entry method with the table name
+    repository.save_entry(entry, 'lexicon')
     mock_cursor.execute.assert_called_once_with(
         "INSERT INTO lexicon (word_tag, word_form, tag_form_hash, logical_symbol, third_arg) VALUES (%s, %s, %s, %s, %s)",
         (entry['word_tag'], entry['word_form'], entry['tag_form_hash'], entry['logical_symbol'], entry['third_arg'])
@@ -41,6 +42,7 @@ def test_save_and_load_entry(repository):
     assert entries[0]['word_tag'] == 'test'
 
     patch.stopall()
+
 
 def test_find_entry_by_id(repository):
     mock_conn = patch('mysql.connector.connect').start()

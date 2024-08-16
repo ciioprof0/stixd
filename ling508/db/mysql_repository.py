@@ -46,26 +46,34 @@ class MySQLRepository(AbstractRepository):
         conn.close()
         return [self._map_row_to_entry(row) for row in rows]
 
-    def save_entry(self, entry: Dict[str, Any]) -> None:
+    def save_entry(self, entry: Dict[str, Any], table_name: str) -> int:
         """
-        Save a single entry to the lexicon table.
+        Save a single entry to the specified table and return the last inserted ID.
         """
         conn = self._connect()
         cursor = conn.cursor()
+        lex_id = None
         try:
-            cursor.execute("INSERT INTO lexicon (word_tag, word_form, tag_form_hash, logical_symbol, third_arg) VALUES (%s, %s, %s, %s, %s)", (entry['word_tag'], entry['word_form'], entry['tag_form_hash'], entry['logical_symbol'], entry['third_arg']))
-            lex_id = cursor.lastrowid
-            print(f"Inserted entry with lex_id: {lex_id}")
+            # Construct the INSERT statement dynamically based on the table name
+            columns = ', '.join(entry.keys())
+            placeholders = ', '.join(['%s'] * len(entry))
+            sql_query = f"INSERT INTO {table_name} ({columns}) VALUES ({placeholders})"
 
-            if 'stix_obj_id' in entry and lex_id:
-                self.link_entry_with_stix(lex_id, entry['stix_obj_id'])
+            cursor.execute(sql_query, tuple(entry.values()))
+            lex_id = cursor.lastrowid  # Directly capture the lex_id here
+            print(f"Inserted entry with lex_id: {lex_id} into {table_name}")
 
-            conn.commit()
+            if lex_id:
+                conn.commit()
         except mysql.connector.Error as err:
             print(f"Error: {err}")
             conn.rollback()
         finally:
             conn.close()
+
+        return lex_id  # Return the lex_id
+
+
 
     def get_last_insert_id(self) -> int:
         """
@@ -73,15 +81,18 @@ class MySQLRepository(AbstractRepository):
         """
         conn = self._connect()
         cursor = conn.cursor()
-        cursor.execute("SELECT LAST_INSERT_ID()")
-        last_id = cursor.fetchone()[0]
-        conn.close()
+        try:
+            cursor.execute("SELECT LAST_INSERT_ID()")
+            last_id = cursor.fetchone()[0]
+            print(f"Retrieved last insert ID: {last_id}")
+        except mysql.connector.Error as err:
+            print(f"Error retrieving last insert ID: {err}")
+            last_id = None
+        finally:
+            conn.close()
         return last_id
 
     def link_entry_with_stix(self, lex_id: int, stix_uuid: str) -> None:
-        """
-        Link a lexicon entry with a STIX object.
-        """
         conn = self._connect()
         cursor = conn.cursor()
         try:
@@ -90,8 +101,9 @@ class MySQLRepository(AbstractRepository):
                 (lex_id, stix_uuid)
             )
             conn.commit()
+            print(f"Successfully linked lex_id {lex_id} with stix_uuid {stix_uuid}")
         except mysql.connector.Error as err:
-            print(f"Error: {err}")
+            print(f"Error linking lex_id {lex_id} with stix_uuid {stix_uuid}: {err}")
             conn.rollback()
         finally:
             conn.close()

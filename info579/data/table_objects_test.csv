@@ -1,0 +1,2 @@
+"obj_id","type","created_by_ref","description","spec_version","created","modified","revoked","labels","confidence","lang","external_references","object_marking_refs","granular_markings","extensions","derived_from","duplicate_of","related_to","other_properties"
+"x-stixd-clex--74f21497-c992-48b1-a7b7-a481a976ff54","x-stixd-clex","user","ACE Common Lexicon Import","2.1","2024-08-16 15:57:17","2024-08-16 15:57:17",0,"[""lexicon""]",100,"en",[],[],[],[],"","",[],""

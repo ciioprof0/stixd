@@ -10,6 +10,7 @@ content, and imports the lexical entries into the stixd_corpus.lexicon table.
 """
 
 # Import Standard Library Modules
+import argparse  # For command-line argument parsing
 from datetime import datetime, timezone
 from typing import Optional, Tuple  # Type hinting
 import hashlib  # Provides SHA256 hash functionality
@@ -20,8 +21,6 @@ from ling508.app.gen_clex_uuid import generate_stix_uuid  # Function to generate
 from ling508.db.mysql_repository import MySQLRepository  # Provides database interaction
 
 # Set Global Variables
-# Small, test Clex file
-CLEX_FILE_PATH = "lexicon/test_clex.pl"
 STIX_TYPE = "x-stixd-clex"
 UUID_VER = 4
 
@@ -34,7 +33,6 @@ class ClexImporter:
 
     def _read_clex_file(self) -> str:
         """Reads the Clex file content from the given file path."""
-        # Add your code here to read the Clex file content
         with open(self.clex_file_path, 'r', encoding='utf-8') as file:
             clex_content = file.read()
         return clex_content
@@ -50,7 +48,8 @@ class ClexImporter:
             third_arg = parts[2].strip() if len(parts) > 2 else None
             return word_tag, word_form, logical_symbol, third_arg
         except IndexError:
-            pass
+            print(f"Error parsing line: {line}")
+            return None, None, None, None
 
     def _generate_hash(self, word_tag: str, word_form: str) -> str:
         """Generates a SHA256 hash for the combination of word_tag and word_form."""
@@ -60,10 +59,12 @@ class ClexImporter:
     def import_clex_entries(self, uri: str) -> str:
         """Main method to import Clex entries into the database."""
         try:
+            # Fetch Clex content from the given URI (assuming it's a web resource)
             response = requests.get(uri, timeout=20)
             response.raise_for_status()
             clex_content = response.text
 
+            # Prepare the STIX object metadata
             current_time = datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M:%S')
             stix_object = {
                 'obj_id': generate_stix_uuid(UUID_VER, STIX_TYPE, uri),
@@ -85,33 +86,69 @@ class ClexImporter:
                 'duplicate_of': None,
                 'related_to': '[]'
             }
-            self.db_repo.save_stix_object(stix_object)
 
+            # Save the STIX object to the database
+            self.db_repo.save_stix_object(stix_object)
+            print(f"Saved STIX object with ID: {stix_object['obj_id']}")
+
+            # Process each line in the Clex content
             for line in clex_content.splitlines():
                 if not line.strip() or line.startswith('%'):
                     continue
-                word_tag, word_form, logical_symbol, third_arg = self._parse_clex_line(line)
-                tag_form_hash = self._generate_hash(word_tag, word_form)
 
-                if not self.db_repo.find_entry_by_id(tag_form_hash):
-                    entry = {
-                        'word_tag': word_tag,
-                        'word_form': word_form,
-                        'tag_form_hash': tag_form_hash,
-                        'logical_symbol': logical_symbol,
-                        'third_arg': third_arg if third_arg is not None else 'NULL'
-                    }
-                    self.db_repo.save_entry(entry)
-                    lex_id = self.db_repo.get_last_insert_id()
+                # Parse the Clex line
+                word_tag, word_form, logical_symbol, third_arg = self._parse_clex_line(line)
+                if word_tag is None or word_form is None:
+                    print(f"Skipping line due to parse error: {line}")
+                    continue
+
+                # Generate a unique hash for the word_tag and word_form
+                tag_form_hash = self._generate_hash(word_tag, word_form)
+                print(f"Generated hash: {tag_form_hash} for {word_tag} - {word_form}")
+
+                # Check if the entry already exists in the lexicon
+                existing_entry = self.db_repo.find_entry_by_id(tag_form_hash)
+                if existing_entry:
+                    print(f"Entry already exists for hash: {tag_form_hash}")
+                    continue
+
+                # Prepare the entry dictionary for insertion
+                entry = {
+                    'word_tag': word_tag,
+                    'word_form': word_form,
+                    'tag_form_hash': tag_form_hash,
+                    'logical_symbol': logical_symbol,
+                    'third_arg': third_arg if third_arg is not None else 'NULL'
+                }
+
+                # Save the entry to the lexicon table and retrieve its lex_id
+                lex_id = self.db_repo.save_entry(entry, 'lexicon')
+                if lex_id:
+                    print(f"Linking lex_id {lex_id} with stix_object_id {stix_object['obj_id']}")
+                    # Link the entry to the STIX object in the junction table
                     self.db_repo.link_entry_with_stix(lex_id, stix_object['obj_id'])
                 else:
-                    self.db_repo.link_existing_entry(tag_form_hash)
+                    print(f"Error: Failed to retrieve lex_id after inserting entry for {word_tag} - {word_form}")
+
             return "Import successful"
+
         except Exception as e:
+            print(f"Exception during import: {e}")
             raise e
 
+
 if __name__ == "__main__":
+    # Argument parsing
+    parser = argparse.ArgumentParser(
+        description='Import ACE Common Lexicon (Clex) into the STIX-D Corpus Database.')
+    parser.add_argument('clex_file_path', nargs='?', default='lexicon/test_clex.pl',
+        help='Path to the Clex file to be imported (default: lexicon/test_clex.pl)')
+    args = parser.parse_args()
+
+    # Instantiate repository and importer with the provided file path
     DB_REPO = MySQLRepository()
-    importer = ClexImporter(DB_REPO, CLEX_FILE_PATH)
-    RESULT = importer.import_clex_entries(CLEX_FILE_PATH)
+    importer = ClexImporter(DB_REPO, args.clex_file_path)
+
+    # Use the provided file path as the URI
+    RESULT = importer.import_clex_entries(args.clex_file_path)
     print(RESULT)

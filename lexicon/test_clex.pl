@@ -59,4 +59,4 @@ dv_pp(forgiven, forgive, '').
 dv_finsg(succeeds, succeed, as).
 dv_infpl(succeed, succeed, as).
 dv_pp(succeeded, succeed, as).
-prep(WordForm, LogicalSymbol).
+prep(in, in).
