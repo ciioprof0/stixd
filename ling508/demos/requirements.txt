@@ -1,4 +1,7 @@
--r ../requirements.txt  # Include all root dependencies
+# -*- coding: utf-8 -*-
+# stixd/ling508/demos/requirements.txt
+
+-r ../../requirements.txt  # Include all root dependencies
 
 # Additional requirements for demos
 ipykernel>=6.0.0  # For running Jupyter kernels

@@ -111,12 +111,12 @@ class ClexImporter:
 
                 # Generate a unique hash for the word_tag and word_form
                 tag_form_hash = self._generate_hash(word_tag, word_form)
-                # print(f"Generated hash: {tag_form_hash} for {word_tag} - {word_form}")
+                print(f"Generated hash: {tag_form_hash} for {word_tag} - {word_form}")
 
                 # Check if the entry already exists in the lexicon
                 existing_entry = self.db_repo.find_entry_by_id(tag_form_hash)
                 if existing_entry:
-                    # print(f"Entry already exists for hash: {tag_form_hash}")
+                    print(f"Entry already exists for hash: {tag_form_hash}")
                     updated_links += 1
                     continue
 
@@ -132,7 +132,7 @@ class ClexImporter:
                 # Save the entry to the lexicon table and retrieve its lex_id
                 lex_id = self.db_repo.save_entry(entry, 'lexicon')
                 if lex_id:
-                    # print(f"Linking lex_id {lex_id} with stix_object_id {stix_object['obj_id']}")
+                    print(f"Linking lex_id {lex_id} with stix_object_id {stix_object['obj_id']}")
                     # Link the entry to the STIX object in the junction table
                     self.db_repo.link_entry_with_stix(lex_id, stix_object['obj_id'])
                     new_entries += 1

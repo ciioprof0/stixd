@@ -12,8 +12,18 @@ from requests.exceptions import RequestException  # Catch HTTP request errors
 from pymysql import MySQLError  # Catch specific MySQL errors
 from werkzeug.exceptions import BadRequest  # Catch Flask request errors
 
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
+# Set the path only if not already set
+if 'stixd' not in sys.path:
+    project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+    sys.path.append(project_root)
+    sys.path.append(os.path.join(project_root, 'ling508'))
+    sys.path.append(os.path.join(project_root, 'ling508', 'app'))
+    sys.path.append(os.path.join(project_root, 'ling508', 'db'))
+    sys.path.append(os.path.join(project_root, 'ling508', 'demos'))
+    sys.path.append(os.path.join(project_root, 'ling508', 'models'))
+    sys.path.append(os.path.join(project_root, 'ling508', 'tests'))
 
+# Import Local Modules
 from ling508.app.clex_importer import ClexImporter # Import Clex entries
 from ling508.db.mysql_repository import MySQLRepository # Access the MySQL db
 
