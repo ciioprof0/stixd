@@ -8,4 +8,5 @@ nbconvert>=7.0.0  # For converting notebooks to HTML
 ipywidgets>=8.0.0  # For interactive widgets
 notebook>=7.0.0  # The Jupyter Notebook package
 nbformat>=5.0.0  # To manipulate notebook files
+RISE>=5.7.0  # For creating interactive slideshows
 voila>=0.4.0  # (Optional) For rendering interactive notebooks as web apps
