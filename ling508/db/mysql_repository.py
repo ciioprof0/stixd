@@ -61,7 +61,7 @@ class MySQLRepository(AbstractRepository):
 
             cursor.execute(sql_query, tuple(entry.values()))
             lex_id = cursor.lastrowid  # Directly capture the lex_id here
-            print(f"Inserted entry with lex_id: {lex_id} into {table_name}")
+            # print(f"Inserted entry with lex_id: {lex_id} into {table_name}")
 
             if lex_id:
                 conn.commit()
@@ -101,7 +101,7 @@ class MySQLRepository(AbstractRepository):
                 (lex_id, stix_uuid)
             )
             conn.commit()
-            print(f"Successfully linked lex_id {lex_id} with stix_uuid {stix_uuid}")
+            # print(f"Successfully linked lex_id {lex_id} with stix_uuid {stix_uuid}")
         except mysql.connector.Error as err:
             print(f"Error linking lex_id {lex_id} with stix_uuid {stix_uuid}: {err}")
             conn.rollback()
