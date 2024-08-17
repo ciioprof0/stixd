@@ -1,3 +1,7 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+# stixd/__init__.py
+
 """This file is used to ensure that the stixd directory is in the Python path."""
 
 import sys

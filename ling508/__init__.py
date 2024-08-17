@@ -1,3 +1,7 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+# stixd/ling508/__init__.py
+
 """This file is used to add the necessary directories to sys.path so that the
 modules in the app, db, model, tests, and web directories can be imported"""
 

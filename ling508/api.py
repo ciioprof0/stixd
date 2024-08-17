@@ -6,10 +6,14 @@
 
 import logging  # Log unexpected errors
 import os  # Create directories for logs
+import sys  # Add the project directory to the path
 from flask import Flask, request, jsonify # Create the API
 from requests.exceptions import RequestException  # Catch HTTP request errors
 from pymysql import MySQLError  # Catch specific MySQL errors
 from werkzeug.exceptions import BadRequest  # Catch Flask request errors
+
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
+
 from ling508.app.clex_importer import ClexImporter # Import Clex entries
 from ling508.db.mysql_repository import MySQLRepository # Access the MySQL db
 
