@@ -43,7 +43,7 @@ def test_form_submission(init_driver, test_client):
 
     try:
         # Open the form in the browser
-        driver.get("http://localhost:5000/ling508/web/stixd.html")
+        driver.get("http://localhost:5000/")
 
         # Fill out the form
         uri_field = driver.find_element(By.ID, "uri")

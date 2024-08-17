@@ -27,7 +27,7 @@ logging.basicConfig(
 
 app = Flask(__name__, static_folder='D:/OneDrive/Code/hltms/stixd/ling508/web')
 
-@app.route('/ling508/web/stixd.html')
+@app.route('/')
 def serve_form():
     """Serves the form for importing Clex entries."""
     return app.send_static_file('stixd.html')
