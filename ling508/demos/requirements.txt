@@ -3,6 +3,7 @@
 # Additional requirements for demos
 ipykernel>=6.0.0  # For running Jupyter kernels
 ipython>=8.0.0  # For interactive computing
+ipython-sql>=0.5.0  # For running SQL queries in Jupyter notebooks
 nbconvert>=7.0.0  # For converting notebooks to HTML
 ipywidgets>=8.0.0  # For interactive widgets
 notebook>=7.0.0  # The Jupyter Notebook package
