@@ -9,6 +9,8 @@ import pytest
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 from ling508.api import app
 
 @pytest.fixture(scope="module")
@@ -51,8 +53,10 @@ def test_form_submission(init_driver, test_client):
         # Open the form in the browser
         driver.get("http://localhost:5000/")
 
-        # Fill out the form
-        uri_field = driver.find_element(By.ID, "uri")
+        # Wait for the URI field to be present
+        uri_field = WebDriverWait(driver, 10).until(
+            EC.presence_of_element_located((By.ID, "uri"))
+        )
         uri_field.send_keys("https://raw.githubusercontent.com/ciioprof0/stixd/main/lexicon/test_clex.pl")
 
         # Submit the form
