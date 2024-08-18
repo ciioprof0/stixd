@@ -5,6 +5,7 @@
 """ End-to-end test for the Flask app """
 
 import os
+import requests
 import time
 from multiprocessing import Process
 import pytest
