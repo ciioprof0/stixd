@@ -7440,9 +7440,9 @@ main {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="Demonstration-of-STIX-D's-Clex-Importer-Tool">Demonstration of STIX-D's Clex Importer Tool<a class="anchor-link" href="#Demonstration-of-STIX-D's-Clex-Importer-Tool">¶</a></h1><p>Slides &amp; Speaker Notes available at</p>
-<ul>
-<li><a href="https://github.com/ciioprof0/stixd/raw/main/ling508/demos/">https://github.com/ciioprof0/stixd/raw/main/ling508/demos/</a></li>
+<h1 id="Demonstration-of-STIX-D's-Clex-Importer-Tool">Demonstration of STIX-D's Clex Importer Tool<a class="anchor-link" href="#Demonstration-of-STIX-D's-Clex-Importer-Tool">¶</a></h1><ul>
+<li>Main Project Repository: <a href="https://github.com/ciioprof0/stixd">https://github.com/ciioprof0/stixd</a></li>
+<li>Slides &amp; Speaker Notes: <a href="https://github.com/ciioprof0/stixd/raw/main/ling508/demos/">https://github.com/ciioprof0/stixd/raw/main/ling508/demos/</a></li>
 </ul>
 </div>
 </div>
@@ -7521,7 +7521,12 @@ main {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Use-Case">Use Case<a class="anchor-link" href="#Use-Case">¶</a></h2><p>TODO: Add Bulleted List or Diagram</p>
+<h2 id="Use-Case">Use Case<a class="anchor-link" href="#Use-Case">¶</a></h2><ul>
+<li><strong>Objective</strong>: Seed lexicon table with ACE common lexicon entries</li>
+<li><strong>Actors</strong>: Database Administrator</li>
+<li><strong>Input</strong>: Clex lexicon file</li>
+<li><strong>Output</strong>: Populated <code>lexicon</code> table and summary report</li>
+</ul>
 </div>
 </div>
 </div>
@@ -7545,7 +7550,12 @@ main {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Project-Design">Project Design<a class="anchor-link" href="#Project-Design">¶</a></h2><p>TODO: Add Bulleted List or Diagram</p>
+<h2 id="Project-Design">Project Design<a class="anchor-link" href="#Project-Design">¶</a></h2><ul>
+<li><strong>Project Overview</strong></li>
+<li><strong>OOP Principles</strong></li>
+<li><strong>Key Components</strong></li>
+</ul>
+<p>Explore the subslides in this section by clicking on the down arrow.</p>
 </div>
 </div>
 </div>
@@ -7557,74 +7567,182 @@ main {
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p><strong>Speaker Notes for the Project Design Slide:</strong></p>
-<p><em><strong>Project Overview</strong></em></p>
-<p>The Clex Importer tool imports lexical entries from the Attempto Controlled English (ACE) lexicon file, stored as Prolog facts, into the <code>lexicon</code> table of the STIX-D MySQL database. This tool is accessible via the command line or a web form served by a Flask API, where users input a URL pointing to an ACE lexicon file. The system then parses each Prolog fact, maps it to the appropriate attributes in the <code>lexicon</code> table, and creates relevant entries in the <code>stix_objects</code> table (i.e., source documents) and the <code>obj_lex_jt</code> junction table.</p>
-<p><em><strong>OOP Principles in the Project</strong></em></p>
-<p>This project employs object-oriented programming (OOP) principles to create a modular, extensible, and maintainable system. Key OOP principles include:</p>
-<ul>
-<li><strong>Abstraction</strong>: The project uses abstract classes and methods to define interfaces and enforce a common structure. For example, the <code>Repository</code> class defines abstract methods for database interactions, implemented by <code>MySQLRepository</code>.</li>
-<li><strong>Encapsulation</strong>: Each class is responsible for a specific aspect of the project, encapsulating related data and behavior. For example, <code>ClexImporter</code> encapsulates the logic for importing Clex entries, while <code>MySQLRepository</code> encapsulates database interactions.</li>
-<li><strong>Inheritance</strong>: The project uses inheritance to create a hierarchy of classes with shared behavior. For example, <code>MySQLRepository</code> inherits from <code>Repository</code> to reuse common database interaction methods.</li>
-<li><strong>Polymorphism</strong>: The project uses polymorphism to allow different classes to be used interchangeably. For example, the <code>Repository</code> interface allows different types of repositories to be used with the <code>ClexImporter</code>.</li>
-</ul>
-<p><em><strong>Key Modules and Their OOP Design</strong></em></p>
-<p>The project consists of the following key modules, each designed using OOP principles:</p>
-<ul>
-<li><p><strong><code>ClexImporter</code> Class in <code>clex_importer.py</code></strong>:</p>
-<ul>
-<li><strong>Responsibility</strong>: Manages the importation of Clex entries into the database.</li>
-<li><strong>Attributes</strong>:<ul>
-<li><code>db_repo</code>: Represents the database repository where Clex entries will be stored.</li>
-<li><code>uri</code>: The location of the Clex file to be imported.</li>
-</ul>
-</li>
-<li><strong>Methods</strong>:<ul>
-<li><code>import_clex_entries()</code>: Imports Clex entries from the specified file into the database.</li>
-<li><code>parse_clex_entry()</code>: Parses a single Clex entry from the file.</li>
-<li><code>map_clex_entry_to_lexicon()</code>: Maps the parsed Clex entry to the <code>lexicon</code> table schema.</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p><strong><code>MySQLRepository</code> Class in <code>mysql_repository.py</code></strong>:</p>
-<ul>
-<li><strong>Responsibility</strong>: Abstracts the database interactions for MySQL databases.</li>
-<li><strong>Attributes</strong>:<ul>
-<li><code>connection</code>: Represents the connection to the MySQL database.</li>
-<li><code>table_name</code>: The name of the table in the database.</li>
-</ul>
-</li>
-<li><strong>Methods</strong>:<ul>
-<li><code>save_stix_object()</code>: Inserts metadata about the Clex import into the <code>stix_objects</code> table.</li>
-<li><code>save_entry()</code>: Inserts lexicon entries into the <code>lexicon</code> table.</li>
-<li><code>link_entry_with_stix()</code>: Links lexicon entries with STIX objects in the <code>obj_lex_jt</code> table.</li>
-<li><code>find_entry_by_id()</code>: Checks if a given entry already exists in the <code>lexicon</code> table.</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p><strong><code>generate_stix_uuid</code> Method</strong>:</p>
-<ul>
-<li><strong>Responsibility</strong>: Generates a UUID for each Clex entry based on its word tag and form.</li>
-<li><strong>Methods</strong>:<ul>
-<li><code>generate_uuid()</code>: Generates a UUID for the Clex entry based on its word tag and form.</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
+<p>In this section of the demonstration, we'll explore the object-oriented design principles and key components of the Clex Importer tool. Click on the down arrow to reveal the subslides and delve deeper into the project's architecture.</p>
 </div>
 </div>
 </div>
 </div>
-</aside></section></section><section><section>
+</aside></section><section>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Interaction-with-the-Database">Interaction with the Database<a class="anchor-link" href="#Interaction-with-the-Database">¶</a></h2><p>TODO: Add Bulleted List or Diagram</p>
+<h3 id="Project-Overview">Project Overview<a class="anchor-link" href="#Project-Overview">¶</a></h3><ul>
+<li>Imports lexical entries</li>
+<li>Takes a URI as input</li>
+<li>Parses Prolog facts</li>
+<li>Populates <code>lexicon</code> table in corpus database</li>
+<li>Accessible via CLI or web interface-</li>
+</ul>
+</div>
+</div>
+</div>
+</div><aside class="notes">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p><strong>Speaker Notes for the Project Overview Slide:</strong></p>
+<p>The Clex Importer tool imports lexical entries from the Attempto Controlled English (ACE) lexicon file, stored as Prolog facts, into the <code>lexicon</code> table of the STIX-D MySQL database. This tool is accessible via the command line or a web form served by a Flask API, where users input a URL pointing to an ACE lexicon file. The system then parses each Prolog fact, maps it to the appropriate attributes in the <code>lexicon</code> table, and creates relevant entries in the <code>stix_objects</code> table (i.e., source documents) and the <code>obj_lex_jt</code> junction table.</p>
+</div>
+</div>
+</div>
+</div>
+</aside></section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="OOP-Principles">OOP Principles<a class="anchor-link" href="#OOP-Principles">¶</a></h3><ul>
+<li>Abstraction</li>
+<li>Encapsulation</li>
+<li>Inheritance</li>
+<li>Polymorphism</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p><strong>Speaker Notes for the OOP Principles Slide:</strong></p>
+<p>This project employs object-oriented programming (OOP) principles to create a modular, extensible, and maintainable system. Key OOP principles include:</p>
+<ul>
+<li>The project uses abstract classes and methods to define interfaces and enforce a common structure. For example, the <code>Repository</code> class defines abstract methods for database interactions, implemented by <code>MySQLRepository</code>.</li>
+<li>Each class is responsible for a specific aspect of the project, encapsulating related data and behavior. For example, <code>ClexImporter</code> encapsulates the logic for importing Clex entries, while <code>MySQLRepository</code> encapsulates database interactions.</li>
+<li>The project uses inheritance to create a hierarchy of classes with shared behavior. For example, <code>MySQLRepository</code> inherits from <code>Repository</code> to reuse common database interaction methods.</li>
+<li>It also uses polymorphism to allow different classes to be used interchangeably. For example, the <code>Repository</code> interface allows different types of repositories to be used with the <code>ClexImporter</code>.</li>
+</ul>
+</div>
+</div>
+</div>
+</div></section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="Key-Modules">Key Modules<a class="anchor-link" href="#Key-Modules">¶</a></h3><ul>
+<li><p><code>ClexImporter</code> Class in <code>clex_importer.py</code>:</p>
+<ul>
+<li>Responsibility</li>
+<li>Attributes: <code>db_repo</code>, <code>uri</code></li>
+<li>Methods:<ul>
+<li><code>import_clex_entries()</code></li>
+<li><code>parse_clex_entry()</code></li>
+<li><code>map_clex_entry_to_lexicon()</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><code>MySQLRepository</code> Class in <code>mysql_repository.py</code>:</p>
+<ul>
+<li>Responsibility</li>
+<li>Attributes:<ul>
+<li><code>connection</code>, <code>table_name</code></li>
+</ul>
+</li>
+<li>Methods:<ul>
+<li><code>save_stix_object()</code></li>
+<li><code>save_entry()</code></li>
+<li><code>link_entry_with_stix()</code></li>
+<li><code>find_entry_by_id()</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><code>generate_stix_uuid</code> Method:</p>
+<ul>
+<li>Responsibility</li>
+<li>Methods:<ul>
+<li><code>generate_uuid()</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div><aside class="notes">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p><strong>Speaker Notes for the Key Modules Slide:</strong></p>
+<p>This slide highlights the key modules of the project:</p>
+<ol>
+<li><p><strong>ClexImporter Class (<code>clex_importer.py</code>)</strong>:</p>
+<ul>
+<li>Manages the importation of Clex entries into the database.</li>
+<li>Main methods include <code>import_clex_entries</code>, <code>parse_clex_entry</code>, and <code>map_clex_entry_to_lexicon</code>, handling the entire process from reading the Clex file to inserting data into the database.</li>
+</ul>
+</li>
+<li><p><strong>MySQLRepository Class (<code>mysql_repository.py</code>)</strong>:</p>
+<ul>
+<li>Abstracts database interactions for MySQL, providing a clean interface for operations like inserting records and linking lexicon entries with STIX objects.</li>
+<li>Key methods are <code>save_stix_object</code>, <code>save_entry</code>, <code>link_entry_with_stix</code>, and <code>find_entry_by_id</code>.</li>
+</ul>
+</li>
+<li><p><strong>generate_stix_uuid Method</strong>:</p>
+<ul>
+<li>Generates unique identifiers for Clex entries based on specific attributes, ensuring consistency with STIX standards.</li>
+</ul>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+</aside></section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="Interaction-with-the-Database">Interaction with the Database<a class="anchor-link" href="#Interaction-with-the-Database">¶</a></h2><ul>
+<li><p><code>ClexImporter</code> Class</p>
+<ul>
+<li>Purpose</li>
+<li>Workflow</li>
+</ul>
+</li>
+<li><p><code>MySQLRepository</code></p>
+<ul>
+<li>Purpose</li>
+<li>Services Provided<ul>
+<li>Inserting STIX Objects and Lexicon Entries</li>
+<li>Checking for Existing Entries</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>Examples of interaction with the database provided in Code Execution section.</p>
 </div>
 </div>
 </div>
@@ -7636,45 +7754,12 @@ main {
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p><strong>Speaker Notes for the Data Interaction Slide:</strong></p>
-<p><em><strong>Database Interaction via <code>clex_importer.py</code> and the <code>MySQLRepository</code> Class</strong></em></p>
-<p>The <code>clex_importer.py</code> module interacts with the STIX-D Corpus Database through the <code>MySQLRepository</code> class, which abstracts the complexities of SQL operations and provides a streamlined interface for database tasks. This interaction ensures that lexicon entries are accurately imported and managed within the database, leveraging both services and abstraction layers.</p>
-<p>A. <strong>The <code>ClexImporter</code> Class as a Service Layer:</strong></p>
+<p>This slide explains how the <code>clex_importer.py</code> module interacts with the STIX-D Corpus Database through the <code>MySQLRepository</code> class, which abstracts SQL operations. The <code>ClexImporter</code> class reads and processes the Clex file, then works with <code>MySQLRepository</code> to insert or update database entries, ensuring accurate data management.</p>
 <ul>
-<li><strong>Purpose</strong>: The <code>ClexImporter</code> class is responsible for reading and processing the ACE Common Lexicon (Clex) file and inserting or updating entries in the database.</li>
-<li><strong>Workflow</strong>:<ul>
-<li>The process begins by reading the Clex file and parsing each entry to extract relevant data.</li>
-<li><code>ClexImporter</code> interacts with the <code>MySQLRepository</code> to insert new records or update existing ones based on the parsed data.</li>
+<li><strong>ClexImporter</strong>: Acts as a service layer that processes the Clex file and communicates with the database.</li>
+<li><strong>MySQLRepository</strong>: Serves as an abstraction layer, handling the actual SQL operations while offering a clean interface for tasks like inserting records, linking entries, and checking for existing data.</li>
 </ul>
-</li>
-</ul>
-<p>B. <strong>The <code>MySQLRepository</code> Class as an Abstraction Layer:</strong></p>
-<ul>
-<li><strong>Purpose</strong>: The <code>MySQLRepository</code> class abstracts the SQL operations needed to interact with the MySQL database, providing a clean interface for essential tasks like inserting records, querying data, and linking entries across tables.</li>
-<li><strong>Services Provided</strong>:<ul>
-<li><strong>Inserting STIX Objects</strong>: The <code>save_stix_object</code> method inserts metadata about the Clex import into the <code>stix_objects</code> table, helping track the provenance and context of the lexicon entries.</li>
-<li><strong>Inserting Lexicon Entries</strong>: The <code>save_entry</code> method inserts lexicon entries into the <code>lexicon</code> table. It accepts a dictionary of entry data and ensures it is correctly stored in the database.</li>
-<li><strong>Linking Entries</strong>: The <code>link_entry_with_stix</code> method associates lexicon entries with STIX objects by inserting records into the <code>obj_lex_jt</code> junction table, maintaining relationships between different data entities.</li>
-<li><strong>Checking for Existing Entries</strong>: The <code>find_entry_by_id</code> method checks the <code>lexicon</code> table to determine if an entry (identified by a unique hash) already exists, helping to avoid duplicates and maintain data integrity.</li>
-</ul>
-</li>
-</ul>
-<p>C. <strong>Abstract Layers and Their Benefits:</strong></p>
-<ul>
-<li><strong>Separation of Concerns</strong>: By utilizing the <code>MySQLRepository</code> class, the <code>clex_importer.py</code> module does not directly handle SQL queries or database connections. Instead, it relies on high-level methods provided by the repository, allowing for easier modification or extension of database interactions without altering the core business logic.</li>
-<li><strong>Reusability and Maintainability</strong>: The abstraction provided by <code>MySQLRepository</code> facilitates the reuse of database interaction methods across different parts of the application, reducing code duplication and enhancing maintainability.</li>
-<li><strong>Error Handling</strong>: The repository class encapsulates error handling for database operations. If a SQL operation fails, the class handles exceptions gracefully, enabling <code>ClexImporter</code> to focus on the overall import process rather than the intricacies of database management.</li>
-</ul>
-<p>D. <strong>Example Workflow:</strong></p>
-<ul>
-<li><strong>Inserting a New Lexicon Entry</strong>:<ul>
-<li><code>ClexImporter</code> processes a line from the Clex file, generating a unique hash for the entry.</li>
-<li>It uses <code>find_entry_by_id</code> to check if the entry already exists in the <code>lexicon</code> table.</li>
-<li>If the entry is new, <code>ClexImporter</code> calls <code>save_entry</code> to insert the data into the <code>lexicon</code> table.</li>
-<li>The entry is then linked to the corresponding STIX object via the <code>link_entry_with_stix</code> method.</li>
-</ul>
-</li>
-</ul>
-<p>In summary, <code>clex_importer.py</code> efficiently manages database interactions through the <code>MySQLRepository</code> class, benefiting from the abstraction and services provided by the repository. This design enhances the code’s modularity, maintainability, and clarity, making it easier to handle complex database operations in a structured and efficient manner.</p>
+<p>The separation of concerns between these layers improves maintainability, reusability, and error handling, making the codebase easier to manage and extend.</p>
 </div>
 </div>
 </div>
@@ -8894,6 +8979,48 @@ Rows in 'obj_lex_jt' table:   59
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h4 id="Reset-Database-for-Web-Form-Demo">Reset Database for Web Form Demo<a class="anchor-link" href="#Reset-Database-for-Web-Form-Demo">¶</a></h4>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Reset the database to start with an empty database</span>
+<span class="o">%</span><span class="k">run</span> ../app/reset_database.py
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Error: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'DELIMITER ;
+
+
+-- Create procedure to check for prolog constraints (sp_check_prol' at line 1
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div></section></section><section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h3 id="Executing-the-Clex-Importer-via-Web-Form">Executing the Clex Importer via Web Form<a class="anchor-link" href="#Executing-the-Clex-Importer-via-Web-Form">¶</a></h3><p>While the Flask API cannot be run directly within this notebook, you can run it locally by following these steps:</p>
 <ol>
 <li>Navigate to the project root directory.</li>
@@ -8923,11 +9050,40 @@ Rows in 'obj_lex_jt' table:   59
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Conclusion">Conclusion<a class="anchor-link" href="#Conclusion">¶</a></h2><p>In this demonstration, we explored the Clex Importer tool, which populates the <code>lexicon</code> table in the STIX-D Corpus Database with entries from the ACE Common Lexicon (Clex). By importing lexical entries from the Clex file, the tool enables precise language processing for applications requiring unambiguous interpretation by both humans and machines. The project design leverages object-oriented programming principles to create a modular, extensible, and maintainable system, with key modules like <code>ClexImporter</code> and <code>MySQLRepository</code> facilitating database interactions and lexicon importation. The testing strategy includes unit, integration, and end-to-end tests to ensure the reliability and correctness of the codebase. By executing the Clex Importer tool via the command line interface and web interface, users can seamlessly import Clex entries into the database, supporting ACE-based natural language processing tasks.</p>
+<h2 id="Conclusion">Conclusion<a class="anchor-link" href="#Conclusion">¶</a></h2><ol>
+<li>Use Case</li>
+<li>Project Design</li>
+<li>Code Interaction with Database</li>
+<li>Test Cases<ul>
+<li>All Tests</li>
+<li>Unit Tests</li>
+<li>Integration Tests</li>
+<li>End-to-End Tests</li>
+</ul>
+</li>
+<li>Code Execution<ul>
+<li>Command Line Interface (in notebook)</li>
+<li>Web Interface (not in notebook)</li>
+</ul>
+</li>
+</ol>
 </div>
 </div>
 </div>
-</div></section></section>
+</div><aside class="notes">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>*** Speaker Notes for the Conclusion Slide:***</p>
+<p>In this demonstration, we explored a use case for the Clex Importer tool, which populates the <code>lexicon</code> table in the STIX-D Corpus Database with entries from the ACE Common Lexicon (Clex). The project design leverages object-oriented programming principles to create a modular, extensible, and maintainable system, with key modules like <code>ClexImporter</code> and <code>MySQLRepository</code> facilitating database interactions and lexicon importation. The testing strategy includes unit, integration, and end-to-end tests to ensure the reliability and correctness of the codebase. By executing the Clex Importer tool via the command line interface and web interface, users can seamlessly import Clex entries into the database, supporting ACE-based natural language processing tasks.</p>
+</div>
+</div>
+</div>
+</div>
+</aside></section></section>
 </div>
 </div>
 </main>
