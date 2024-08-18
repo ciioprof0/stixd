@@ -46,13 +46,13 @@ def init_driver():
 def run_flask_app():
     """Start the Flask app in a separate process."""
     logging.info("Attempting to start the Flask app...")
-    app.run(host="0.0.0.0", port=5000, debug=False, use_reloader=False)
+    app.run(host="0.0.0.0", port=50001, debug=False, use_reloader=False)
 
 def wait_for_flask():
     """Wait until the Flask app is responsive."""
-    for i in range(30):  # Retry 30 times with 1-second intervals
+    for i in range(60):  # Retry 60 times with 1-second intervals
         try:
-            response = requests.get("http://localhost:5000/")
+            response = requests.get("http://localhost:50001/")
             if response.status_code == 200:
                 logging.info(f"Flask app responded successfully on attempt {i + 1}.")
                 return True
@@ -76,7 +76,7 @@ def test_form_submission(init_driver, test_client):
             pytest.fail("Flask app did not start within the expected time.")
 
         # Open the form in the browser
-        driver.get("http://localhost:5000/")
+        driver.get("http://localhost:50001/")
 
         # Wait for the URI field to be present
         uri_field = WebDriverWait(driver, 20).until(
