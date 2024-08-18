@@ -46,7 +46,7 @@ def init_driver():
 def run_flask_app():
     """Start the Flask app in a separate process."""
     logging.info("Attempting to start the Flask app...")
-    app.run(host="0.0.0.0", port=50001, debug=False, use_reloader=False)
+    app.run(host="0.0.0.0", port=50001, debug=True, use_reloader=False)
 
 def wait_for_flask():
     """Wait until the Flask app is responsive."""
