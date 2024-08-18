@@ -4,6 +4,7 @@
 
 """ End-to-end test for the Flask app """
 
+isinstance
 import os
 import requests
 import time
@@ -15,6 +16,8 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from ling508.api import app
+
+logging.basicConfig(level=logging.INFO)
 
 @pytest.fixture(scope="module")
 def test_client():
@@ -42,18 +45,21 @@ def init_driver():
 
 def run_flask_app():
     """Start the Flask app in a separate process."""
+    logging.info("Attempting to start the Flask app...")
     app.run(host="0.0.0.0", port=5000, debug=False, use_reloader=False)
 
 def wait_for_flask():
     """Wait until the Flask app is responsive."""
-    for _ in range(30):  # Retry 30 times with 1-second intervals
+    for i in range(30):  # Retry 30 times with 1-second intervals
         try:
             response = requests.get("http://localhost:5000/")
             if response.status_code == 200:
+                logging.info(f"Flask app responded successfully on attempt {i + 1}.")
                 return True
         except requests.exceptions.ConnectionError:
-            pass
+            logging.warning(f"Attempt {i + 1}: Flask app not yet responsive.")
         time.sleep(1)
+    logging.error("Flask app did not start within the expected time.")
     return False
 
 def test_form_submission(init_driver, test_client):
@@ -78,7 +84,6 @@ def test_form_submission(init_driver, test_client):
         )
 
         # Use a local path to the file within the same repo
-        # Construct the absolute path to the lexicon file
         lexicon_file_path = os.path.join(os.getcwd(), 'lexicon', 'test_clex.pl')
         uri_field.send_keys(lexicon_file_path)
 
