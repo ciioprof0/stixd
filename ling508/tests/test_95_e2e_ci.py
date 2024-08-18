@@ -4,7 +4,7 @@
 
 """ End-to-end test for the Flask app """
 
-isinstance
+import logging
 import os
 import requests
 import time
