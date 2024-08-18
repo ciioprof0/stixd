@@ -25,6 +25,12 @@ def init_driver():
     chrome_options = Options()
     chrome_options.add_argument("--window-size=640,480")
 
+    # Enable headless mode for CI environments
+    chrome_options.add_argument("--headless")
+    chrome_options.add_argument("--disable-gpu")  # Required for running in headless mode on some systems
+    chrome_options.add_argument("--no-sandbox")  # Recommended by some for running in CI environments
+    chrome_options.add_argument("--disable-dev-shm-usage")  # Recommended to avoid issues with shared memory in Docker
+
     driver = webdriver.Chrome(options=chrome_options)
     yield driver
     driver.quit()
