@@ -3,7 +3,7 @@
 <html lang="en">
 <head><meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>demo_clex_importer</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>demo_clex_importer_notes</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <style type="text/css">
     pre { line-height: 125%; }
 td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
@@ -7518,7 +7518,8 @@ a.anchor-link {
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h1 id="Demonstration-of-STIX-D's-Clex-Importer-Tool">Demonstration of STIX-D's Clex Importer Tool<a class="anchor-link" href="#Demonstration-of-STIX-D's-Clex-Importer-Tool">¶</a></h1><ul>
 <li>Main Project Repository: <a href="https://github.com/ciioprof0/stixd">https://github.com/ciioprof0/stixd</a></li>
-<li>Slides &amp; Speaker Notes: <a href="https://github.com/ciioprof0/stixd/raw/main/ling508/demos/">https://github.com/ciioprof0/stixd/raw/main/ling508/demos/</a></li>
+<li>Slides &amp; Speaker Notes:
+<a href="https://github.com/ciioprof0/stixd/raw/main/ling508/demos/">https://github.com/ciioprof0/stixd/raw/main/ling508/demos/</a></li>
 </ul>
 </div>
 </div>
@@ -7531,8 +7532,7 @@ a.anchor-link {
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p><strong>Speaker Notes for the Title Slide:</strong></p>
-<p>Welcome to this demonstration of the Clex Importer tool. The Clex Importer is a utility designed to populate the <code>lexicon</code> table in the STIX-D Corpus Database with entries from the Attempto Controlled English (ACE) common lexicon. ACE is a controlled natural language, enabling precise language processing for applications that require unambiguous interpretation by both humans and machines.</p>
-<p>In this demonstration, we will walk through the process of importing the ACE common lexicon into the database. The tool reads the Clex lexicon file, parses its content, and systematically imports the lexical entries into the database. By the end of this demonstration, the <code>lexicon</code> table will be populated with sample entries to support ACE-based natural language processing tasks.</p>
+<p>Welcome to this demonstration of the Clex Importer tool.</p>
 </div>
 </div>
 </div>
@@ -7563,7 +7563,7 @@ a.anchor-link {
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p><strong>Speaker Notes for the Agenda Slide:</strong></p>
 <ul>
-<li><p><strong>Introduction</strong>: This slide outlines the key points we'll cover in today's demonstration.</p>
+<li><p><strong>Introduction</strong>: The agenda slide outlines the key points we'll cover in today's demonstration.</p>
 </li>
 <li><p><strong>Background</strong>: We'll provide an overview of the parent STIX-D project.</p>
 </li>
@@ -8018,7 +8018,7 @@ Before running the tests, ensure that the necessary packages are installed and t
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="All-Test-Cases">All Test Cases<a class="anchor-link" href="#All-Test-Cases">¶</a></h3><p>TODO: Add Bulleted List or Diagram</p>
+<h3 id="All-Test-Cases">All Test Cases<a class="anchor-link" href="#All-Test-Cases">¶</a></h3>
 </div>
 </div>
 </div>
@@ -9198,18 +9198,8 @@ Rows in 'obj_lex_jt' table:   59
 <li>Use Case</li>
 <li>Project Design</li>
 <li>Code Interaction with Database</li>
-<li>Test Cases<ul>
-<li>All Tests</li>
-<li>Unit Tests</li>
-<li>Integration Tests</li>
-<li>End-to-End Tests</li>
-</ul>
-</li>
-<li>Code Execution<ul>
-<li>Command Line Interface (in notebook)</li>
-<li>Web Interface (not in notebook)</li>
-</ul>
-</li>
+<li>Test Cases</li>
+<li>Code Execution</li>
 </ol>
 </div>
 </div>
@@ -9221,7 +9211,7 @@ Rows in 'obj_lex_jt' table:   59
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>*** Speaker Notes for the Conclusion Slide:***</p>
+<p><strong>Speaker Notes for the Conclusion Slide:</strong></p>
 <p>In this demonstration, we explored a use case for the Clex Importer tool, which populates the <code>lexicon</code> table in the STIX-D Corpus Database with entries from the ACE Common Lexicon (Clex). The project design leverages object-oriented programming principles to create a modular, extensible, and maintainable system, with key modules like <code>ClexImporter</code> and <code>MySQLRepository</code> facilitating database interactions and lexicon importation. The testing strategy includes unit, integration, and end-to-end tests to ensure the reliability and correctness of the codebase. By executing the Clex Importer tool via the command line interface and web interface, users can seamlessly import Clex entries into the database, supporting ACE-based natural language processing tasks.</p>
 </div>
 </div>
