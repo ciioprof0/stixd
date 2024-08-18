@@ -42,11 +42,11 @@ def init_driver():
 
 def run_flask_app():
     """Start the Flask app in a separate process."""
-    app.run(debug=False, use_reloader=False)
+    app.run(host="0.0.0.0", port=5000, debug=False, use_reloader=False)
 
 def wait_for_flask():
     """Wait until the Flask app is responsive."""
-    for _ in range(10):  # Retry 10 times with 1-second intervals
+    for _ in range(30):  # Retry 30 times with 1-second intervals
         try:
             response = requests.get("http://localhost:5000/")
             if response.status_code == 200:
