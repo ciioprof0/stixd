@@ -7469,21 +7469,12 @@ main {
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h2 id="Agenda">Agenda<a class="anchor-link" href="#Agenda">¶</a></h2><ol>
+<li>Intro to STIX-D Project</li>
 <li>Use Case</li>
 <li>Project Design</li>
 <li>Code Interaction with Database</li>
-<li>Test Cases<ul>
-<li>All Tests</li>
-<li>Unit Tests</li>
-<li>Integration Tests</li>
-<li>End-to-End Tests</li>
-</ul>
-</li>
-<li>Code Execution<ul>
-<li>Command Line Interface (in notebook)</li>
-<li>Web Interface (not in notebook)</li>
-</ul>
-</li>
+<li>Test Cases</li>
+<li>Code Execution</li>
 </ol>
 </div>
 </div>
@@ -7498,6 +7489,8 @@ main {
 <p><strong>Speaker Notes for the Agenda Slide:</strong></p>
 <ul>
 <li><p><strong>Introduction</strong>: This slide outlines the key points we'll cover in today's demonstration.</p>
+</li>
+<li><p><strong>Background</strong>: We'll provide an overview of the parent STIX-D project.</p>
 </li>
 <li><p><strong>Use Case</strong>: We'll start by discussing the specific problem this tool addresses and the context in which it operates.</p>
 </li>
@@ -7521,7 +7514,97 @@ main {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Use-Case">Use Case<a class="anchor-link" href="#Use-Case">¶</a></h2><ul>
+<h2 id="What-is-the-STIX-D-Project?">What is the STIX-D Project?<a class="anchor-link" href="#What-is-the-STIX-D-Project?">¶</a></h2><p>To develop a Controlled Natural Language (<a href="https://en.wikipedia.org/wiki/Controlled_natural_language">CNL</a>) and necessary tools for Structured Threat Information eXpression (<a href="https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html">STIX</a>) descriptions within the Cyber Threat Intelligence (<a href="https://www.crowdstrike.com/cybersecurity-101/threat-intelligence/">CTI</a>) domain. The CNL will be a custom subset of Attempto Controlled English (<a href="https://www.crowdstrike.com/cybersecurity-101/threat-intelligence/">ACE</a>).</p>
+<p>The goal of the project is to improve the efficiency and efficacy of automated CTI systems in processing natural language texts.</p>
+<p><em>Click the down arrow to explore the STIX-D project in more detail.</em></p>
+</div>
+</div>
+</div>
+</div><aside class="notes">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p><strong>Speaker Notes for the STIX-D Project Slide:</strong></p>
+<p>As outlined on this slide, the purpose of the STIX-D Project is to develop a Controlled Natural Language (CNL) and the necessary tools for STIX descriptions.
+This CNL will be a custom subset of Attempto Controlled English (ACE).
+The project's aim is to improve the efficiency and efficacy of automated CTI systems in processing natural language texts, making threat intelligence more precise and actionable.</p>
+</div>
+</div>
+</div>
+</div>
+</aside></section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="What-is-STIX?">What is STIX?<a class="anchor-link" href="#What-is-STIX?">¶</a></h2><ul>
+<li>A language and serialization format for sharing cyber threat intelligence</li>
+<li>STIX objects categorize each datum with specific attributes</li>
+<li><code>description</code> field (optional)<ul>
+<li>Natural language ‘free’ text</li>
+<li>Provides more details &amp; context<ul>
+<li>Purpose &amp; key characteristics</li>
+<li>How used; relation to other objects</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div><aside class="notes">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p><strong>Speaker Notes for the "What is STIX?" Slide:</strong></p>
+<p>STIX is a standardized language and format used for sharing cyber threat intelligence.
+It categorizes each piece of data with specific attributes, allowing for a structured approach to analyzing threats.
+The 'description' field, highlighted here, is optional but highly valuable.
+It provides natural language text that offers more details, context, and insights into the nature and purpose of the threat.
+While this flexibility in the description field is beneficial, it also introduces challenges, especially when complex language is involved, which can be difficult for automated systems to process effectively.</p>
+</div>
+</div>
+</div>
+</div>
+</aside></section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="STIX-Description-(STIX-D)-Examples">STIX Description (STIX-D) Examples<a class="anchor-link" href="#STIX-Description-(STIX-D)-Examples">¶</a></h3><ol>
+<li><p>"description": "A variant of the cryptolocker family"</p>
+</li>
+<li><p>"description": "The Evil Org threat actor group"</p>
+</li>
+<li><p>"description": "This file is part of Poison Ivy“</p>
+</li>
+<li><p>"description": "A particular form of spear phishing where the attacker claims that the target had won a contest, including personal details, to get them to click on a link."</p>
+</li>
+<li><p>"description": "Incidents usually feature a shared TTP of a wildcat being released within the building containing network access, scaring users to leave their computers without locking them first. Still determining where the threat actors are getting the wildcats."</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div></section></section><section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="Use-Case-L1:-Import-ACE-Common-Lexicon">Use Case L1: Import ACE Common Lexicon<a class="anchor-link" href="#Use-Case-L1:-Import-ACE-Common-Lexicon">¶</a></h2><ul>
 <li><strong>Objective</strong>: Seed lexicon table with ACE common lexicon entries</li>
 <li><strong>Actors</strong>: Database Administrator</li>
 <li><strong>Input</strong>: Clex lexicon file</li>
