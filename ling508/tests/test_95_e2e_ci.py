@@ -4,6 +4,8 @@
 
 """ End-to-end test for the Flask app """
 
+import os
+import time
 from multiprocessing import Process
 import pytest
 from selenium import webdriver
@@ -41,6 +43,18 @@ def run_flask_app():
     """Start the Flask app in a separate process."""
     app.run(debug=False, use_reloader=False)
 
+def wait_for_flask():
+    """Wait until the Flask app is responsive."""
+    for _ in range(10):  # Retry 10 times with 1-second intervals
+        try:
+            response = requests.get("http://localhost:5000/")
+            if response.status_code == 200:
+                return True
+        except requests.exceptions.ConnectionError:
+            pass
+        time.sleep(1)
+    return False
+
 def test_form_submission(init_driver, test_client):
     """Test the form submission on the Flask app."""
     driver = init_driver
@@ -50,14 +64,22 @@ def test_form_submission(init_driver, test_client):
     flask_process.start()
 
     try:
+        # Ensure Flask app is ready
+        if not wait_for_flask():
+            pytest.fail("Flask app did not start within the expected time.")
+
         # Open the form in the browser
         driver.get("http://localhost:5000/")
 
         # Wait for the URI field to be present
-        uri_field = WebDriverWait(driver, 10).until(
+        uri_field = WebDriverWait(driver, 20).until(
             EC.presence_of_element_located((By.ID, "uri"))
         )
-        uri_field.send_keys("https://raw.githubusercontent.com/ciioprof0/stixd/main/lexicon/test_clex.pl")
+
+        # Use a local path to the file within the same repo
+        # Construct the absolute path to the lexicon file
+        lexicon_file_path = os.path.join(os.getcwd(), 'lexicon', 'test_clex.pl')
+        uri_field.send_keys(lexicon_file_path)
 
         # Submit the form
         submit_button = driver.find_element(By.TAG_NAME, "button")
